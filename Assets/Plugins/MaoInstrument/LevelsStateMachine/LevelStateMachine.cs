@@ -33,7 +33,7 @@ namespace Plugins.GameStateMachines
             else
             {
                 T createdState = new T();
-                DiServices.MainContainer.InjectSingle(createdState);
+                DiBox.MainBox.InjectSingle(createdState);
                 _dictStates.Add(typeof(T), createdState);
                 return _dictStates[typeof(T)] as T;
             }

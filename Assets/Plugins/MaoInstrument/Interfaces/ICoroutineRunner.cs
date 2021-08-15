@@ -1,9 +1,10 @@
 ﻿using System.Collections;
+using UnityEngine;
 
 namespace Plugins.Interfaces
 {
     public interface ICoroutineRunner
     {
-        ICurtain StartCoroutine(IEnumerator curtaint);
+        Coroutine StartCoroutine(IEnumerator curtaint);
     }
 }

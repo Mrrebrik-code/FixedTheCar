@@ -10,16 +10,16 @@ namespace Plugins.DIContainer
         
         private void Awake()
         {
-            foreach (var manual in _manualBind) manual.Create(DiServices.MainContainer);
-            foreach (var obj in _objects) DiServices.MainContainer.RegisterSingleType(obj.Instance, obj.id);
+            foreach (var manual in _manualBind) manual.Create(DiBox.MainBox);
+            foreach (var obj in _objects) DiBox.MainBox.RegisterSingleType(obj.Instance, obj.id);
         }
 
         private void OnDestroy()
         {
-            foreach (var manual in _manualBind) manual.DestroyDi(DiServices.MainContainer);
+            foreach (var manual in _manualBind) manual.DestroyDi(DiBox.MainBox);
             foreach (var obj in _objects)
                 if (obj.IsUnbind)
-                    DiServices.MainContainer.RemoveSingelType(obj.Instance.GetType(), obj.id);
+                    DiBox.MainBox.RemoveSingelType(obj.Instance.GetType(), obj.id);
         }
 
         [System.Serializable]

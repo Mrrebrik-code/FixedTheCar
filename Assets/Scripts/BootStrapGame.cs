@@ -1,18 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
+using Infrastructure;
+using Infrastructure.Configs;
+using Plugins.DIContainer;
+using Plugins.GameStateMachines;
+using Plugins.GameStateMachines.States;
+using Plugins.Interfaces;
 using UnityEngine;
 
-public class BootStrapGame : MonoBehaviour
+public class BootStrapGame : MonoBehaviour, ICoroutineRunner
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private ConfigLevelName _levelNameConfig;
+    [SerializeField] private Curtain _curtainGame;
+
+    private DiBox _diBox = DiBox.MainBox;
+
+    private void Start()
     {
-        
+        MakeDontDestroyOnLoad();
+        LevelStateMachine levelStateMachine = new LevelStateMachine();
+        RegisterDI(levelStateMachine);
+        levelStateMachine.Enter<InitGame>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void MakeDontDestroyOnLoad()
     {
-        
+        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(_curtainGame);
+    }
+
+    private void RegisterDI(LevelStateMachine levelStateMachine)
+    {
+        _diBox.RegisterSingle(_curtainGame);
+        _diBox.RegisterSingle(_levelNameConfig);
+        _diBox.RegisterSingle(levelStateMachine);
+        _diBox.RegisterSingle<ICoroutineRunner>(this);
+        CreateSceneLoader();
+    }
+
+    private void CreateSceneLoader()
+    {
+        var sceneLoader = new SceneLoader();
+        _diBox.RegisterSingle(sceneLoader);
+        _diBox.InjectSingle(sceneLoader);
     }
 }

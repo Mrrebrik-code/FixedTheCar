@@ -1,8 +1,9 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Plugins.Interfaces
 {
-    public interface ICurtain
+    public abstract class Curtain : MonoBehaviour
     {
         public abstract void Fade(Action callback);
         public abstract void Unfade();

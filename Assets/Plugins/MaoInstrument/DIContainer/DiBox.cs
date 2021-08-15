@@ -10,21 +10,21 @@ namespace Plugins.DIContainer
     /// <summary>
     /// Simple Di container with Single and Transit object
     /// </summary>
-    public sealed class DiServices
+    public sealed class DiBox
     {
         /// <summary>
         /// Simple of DI 
         /// </summary>
-        public static DiServices MainContainer => _instance ?? (_instance = new DiServices());
+        public static DiBox MainBox => _instance ?? (_instance = new DiBox());
 
-        private static DiServices _instance;
+        private static DiBox _instance;
 
         public delegate T TransitMethod<T>();
 
         private readonly Dictionary<Type, Dictionary<string, object>> _dictionaryTransit;
         private readonly Dictionary<Type, Dictionary<string, object>> _dictionarySingle;
 
-        public DiServices()
+        public DiBox()
         {
             _dictionaryTransit = new Dictionary<Type, Dictionary<string, object>>();
             _dictionarySingle = new Dictionary<Type, Dictionary<string, object>>();
