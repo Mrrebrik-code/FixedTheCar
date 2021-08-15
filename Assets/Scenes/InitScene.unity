@@ -234,6 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelNameConfig: {fileID: 11400000, guid: ee4c058c1f689ed458a2bb2f59c47c7e, type: 2}
   _curtainGame: {fileID: 794823145}
+  _russia: {fileID: 11400000, guid: dde3cf3177288994393f7f310884c0e0, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

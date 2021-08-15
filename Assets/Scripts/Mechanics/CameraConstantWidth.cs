@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Mechanics
 {
@@ -7,7 +8,8 @@ namespace Mechanics
     {
         public Vector2 DefaultResolution = new Vector2(1920, 1080);
         [Range(0f, 1f)] public float WidthOrHeight = 0;
-
+        [SerializeField] private bool _isDebug;
+        
         private Camera componentCamera;
     
         private float initialSize;
@@ -16,7 +18,15 @@ namespace Mechanics
         private float initialFov;
         private float horizontalFov = 120f;
 
-        private void Start()
+
+        private void OnEnable()
+        {
+            if(_isDebug) Init();
+        }
+
+        private void Start() => Init();
+
+        private void Init()
         {
             componentCamera = GetComponent<Camera>();
             initialSize = componentCamera.orthographicSize;

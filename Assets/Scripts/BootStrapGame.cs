@@ -1,8 +1,8 @@
 using Infrastructure;
 using Infrastructure.Configs;
+using Infrastructure.LevelState.States;
 using Plugins.DIContainer;
 using Plugins.GameStateMachines;
-using Plugins.GameStateMachines.States;
 using Plugins.Interfaces;
 using UnityEngine;
 
@@ -10,6 +10,9 @@ public class BootStrapGame : MonoBehaviour, ICoroutineRunner
 {
     [SerializeField] private ConfigLevelName _levelNameConfig;
     [SerializeField] private Curtain _curtainGame;
+
+    [Header("Локализация")] 
+    [SerializeField] private ConfigLocalization _russia;
 
     private DiBox _diBox = DiBox.MainBox;
 
@@ -33,6 +36,7 @@ public class BootStrapGame : MonoBehaviour, ICoroutineRunner
         _diBox.RegisterSingle(_levelNameConfig);
         _diBox.RegisterSingle(levelStateMachine);
         _diBox.RegisterSingle<ICoroutineRunner>(this);
+        _diBox.RegisterSingle(_russia);
         CreateSceneLoader();
     }
 

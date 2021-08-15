@@ -5,20 +5,19 @@ using Plugins.Interfaces;
 
 namespace Infrastructure.LevelState.States
 {
-    public class MainMenu : IEnterState
+    public class Garage : IEnterState
     {
         [DI] private SceneLoader _sceneLoader;
-        [DI] private Curtain _curtain;
         [DI] private ConfigLevelName _configLevel;
+        [DI] private Curtain _curtain;
         
         public void Enter()
         {
-            _sceneLoader.Load(_configLevel.MainMnu, _curtain.Unfade);
+            _sceneLoader.Load(_configLevel.Garage, ()=>_curtain.Unfade());
         }
 
         public void Exit()
         {
-            
         }
     }
 }
