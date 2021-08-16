@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using Factories;
+using Mechanics.Garage;
 using Mechanics.Prompters;
 using UnityEngine;
 
 namespace Infrastructure.Configs
 {
-    [CreateAssetMenu(menuName = "Config/Game", order = 0)]
+    [CreateAssetMenu(menuName = "Config/Game", order = 51)]
     public class ConfigGame : ScriptableObject
     {
-        public List<PrompterType> _templatePrompter;
+        public Garage TemplateGarage;
+        public List<PrompterType> TemplatePrompter;
+        public List<ConfigLevel> ConfigLevels;
         
         [Serializable]
         public class PrompterType
@@ -20,5 +23,7 @@ namespace Infrastructure.Configs
             [SerializeField] private Prompter _template;
             [SerializeField] private FactoryPrompter.Type _type;
         }
+
+        
     }
 }

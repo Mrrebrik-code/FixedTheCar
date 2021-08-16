@@ -1,9 +1,7 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using Factories;
 using Infrastructure.Configs;
 using Infrastructure.LevelState.States;
-using Mechanics.Interfaces;
 using Mechanics.Prompters;
 using Plugins.DIContainer;
 using Plugins.GameStateMachines;
@@ -11,7 +9,7 @@ using Plugins.Interfaces;
 using Services.Interfaces;
 using UnityEngine;
 
-namespace Infrastructure.LevelState.SceneScripts
+namespace Infrastructure.LevelState.SceneScripts.Menu
 {
     public class MainMenuLogic : MonoBehaviour
     {
@@ -48,7 +46,7 @@ namespace Infrastructure.LevelState.SceneScripts
             _tweenCamera = Camera.main.DOOrthoSize(_zoomCamera, _durationCamera);
             _input.AnyInput -= OnAnyInput;
             _currentPropter.Hide();
-            _curtain.Fade(() => _levelStateMachine.Enter<Garage>(), _durationTransit);
+            _curtain.Fade(() => _levelStateMachine.Enter<GarageScene>(), _durationTransit);
         }
 
         private void OnDestroy() => _tweenCamera.Kill();

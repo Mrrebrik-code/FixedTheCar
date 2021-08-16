@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ac5372bcba84d7b9a7989691f47d81e, type: 3}
   m_Name: GameCFG
   m_EditorClassIdentifier: 
-  _templatePrompter:
+  TemplateGarage: {fileID: 6063992734540445619, guid: 98ed148e1857d82469b3c7797d947398, type: 3}
+  TemplatePrompter:
   - _template: {fileID: 6719651982788479548, guid: fb3f06cdc7baf5642bfb11c146429556, type: 3}
     _type: 1
   - _template: {fileID: 6719651982788479548, guid: 22835ee16e02fc54a8514f882eee22a2, type: 3}
@@ -23,3 +24,10 @@ MonoBehaviour:
     _type: 2
   - _template: {fileID: 6719651982788479548, guid: ef3033563315a0748aa839c3820226eb, type: 3}
     _type: 4
+  ConfigLevels:
+  - {fileID: 11400000, guid: d3a830fda745ab94bbc73117250ca268, type: 2}
+  - {fileID: 11400000, guid: 802f0028fe1aa984cb901eecf7665362, type: 2}
+  - {fileID: 11400000, guid: d3a830fda745ab94bbc73117250ca268, type: 2}
+  - {fileID: 11400000, guid: 802f0028fe1aa984cb901eecf7665362, type: 2}
+  - {fileID: 11400000, guid: d3a830fda745ab94bbc73117250ca268, type: 2}
+  - {fileID: 11400000, guid: 802f0028fe1aa984cb901eecf7665362, type: 2}

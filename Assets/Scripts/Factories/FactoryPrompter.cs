@@ -22,7 +22,7 @@ namespace Factories
         [DI] private void Init()
         {
             _dictPrompter = new Dictionary<Type, Prompter>();
-            foreach (var listPair in _configGame._templatePrompter)
+            foreach (var listPair in _configGame.TemplatePrompter)
             {
                 var instance = DiBox.MainBox.CreatePrefab(listPair.Template);
                 _dictPrompter.Add(listPair.Type, instance);

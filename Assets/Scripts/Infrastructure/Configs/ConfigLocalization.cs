@@ -6,5 +6,7 @@ namespace Infrastructure.Configs
     public class ConfigLocalization : ScriptableObject
     {
         [TextArea(1, 4)] public string Wellcome;
+        [TextArea(1, 4)] public string FirstFixCar;
+        [TextArea(1, 4)] public string HowToStartGame;
     }
 }
