@@ -9,6 +9,7 @@ using UnityEngine;
 public class BootStrapGame : MonoBehaviour, ICoroutineRunner
 {
     [SerializeField] private ConfigLevelName _levelNameConfig;
+    [SerializeField] private ConfigGame _configGame;
     [SerializeField] private Curtain _curtainGame;
 
     [Header("Локализация")] 
@@ -37,6 +38,7 @@ public class BootStrapGame : MonoBehaviour, ICoroutineRunner
         _diBox.RegisterSingle(levelStateMachine);
         _diBox.RegisterSingle<ICoroutineRunner>(this);
         _diBox.RegisterSingle(_russia);
+        _diBox.RegisterSingle(_configGame);
         CreateSceneLoader();
     }
 

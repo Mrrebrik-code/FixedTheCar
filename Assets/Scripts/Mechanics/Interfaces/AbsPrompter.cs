@@ -5,10 +5,10 @@ namespace Mechanics.Interfaces
 {
     public abstract class AbsPrompter : MonoBehaviour
     {
-        public abstract void Unfade(Action action = null);
+        public abstract void Unhide(Action action = null);
 
-        public abstract void Say(string message);
+        public abstract void Say(string message, Action callback = null);
 
-        public abstract void Fade(Action action = null);
+        public abstract void Hide(Action action = null);
     }
 }

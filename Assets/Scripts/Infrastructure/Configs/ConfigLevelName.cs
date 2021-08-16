@@ -2,7 +2,7 @@
 
 namespace Infrastructure.Configs
 {
-    [CreateAssetMenu(menuName = "Config coder/level names", order = 51)]
+    [CreateAssetMenu(menuName = "Config/level names", order = 51)]
     public class ConfigLevelName : ScriptableObject
     {
         public string MainMnu;

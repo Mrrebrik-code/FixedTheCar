@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5372bcba84d7b9a7989691f47d81e, type: 3}
+  m_Name: GameCFG
+  m_EditorClassIdentifier: 
+  _templatePrompter:
+  - _template: {fileID: 6719651982788479548, guid: fb3f06cdc7baf5642bfb11c146429556, type: 3}
+    _type: 1
+  - _template: {fileID: 6719651982788479548, guid: 22835ee16e02fc54a8514f882eee22a2, type: 3}
+    _type: 3
+  - _template: {fileID: 6719651982788479548, guid: 32d07a8381c2baa4694a29bdc5bed594, type: 3}
+    _type: 0
+  - _template: {fileID: 6719651982788479548, guid: 6723a9dd0312c5843878545e63078256, type: 3}
+    _type: 2
+  - _template: {fileID: 6719651982788479548, guid: ef3033563315a0748aa839c3820226eb, type: 3}
+    _type: 4
