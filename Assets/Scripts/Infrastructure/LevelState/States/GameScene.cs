@@ -3,19 +3,24 @@ using Plugins.DIContainer;
 using Plugins.GameStateMachines.Interfaces;
 using Plugins.Interfaces;
 
-namespace Infrastructure.LevelState.SceneScripts.Garages
+namespace Infrastructure.LevelState.States
 {
     public class GameScene : IPayLoadedState<ConfigLevel>
     {
-        [DI] private Curtain _curtain;
         [DI] private SceneLoader _sceneLoader;
         [DI] private ConfigLevelName _levelName;
         
-        public void Enter(ConfigLevel payLoaded) => _sceneLoader.Load(_levelName.GameLevel, ()=>_curtain.Unfade());
+        private DiBox _diBox = DiBox.MainBox;
+        
+        public void Enter(ConfigLevel payLoaded)
+        {
+            _diBox.RegisterSingle(payLoaded);
+            _sceneLoader.Load(_levelName.GameLevel);
+        }
 
         public void Exit()
         {
-            
+            _diBox.RemoveSingel<ConfigLevel>();
         }
     }
 }

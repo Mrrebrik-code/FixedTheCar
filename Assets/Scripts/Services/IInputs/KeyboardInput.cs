@@ -15,10 +15,8 @@ namespace Services.IInputs
             if(Input.anyKey) AnyInput?.Invoke();
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("Click 1 прошел");
-                //if(EventSystem.current.IsPointerOverGameObject())
-                    //return;
-                Debug.Log("Click 2 прошел");
+                if(EventSystem.current.IsPointerOverGameObject())
+                    return;
                 RayCastClick?.Invoke(Input.mousePosition);
             }
         }

@@ -14,17 +14,9 @@ namespace Infrastructure.LevelState.SceneScripts.Garages
         
         [DI] private IInput _input;
 
-        public void On()
-        {
-            Debug.Log("On");
-            _input.RayCastClick += OnRayCastClick;
-        }
+        public void On() => _input.RayCastClick += OnRayCastClick;
 
-        public void Off()
-        {
-            Debug.Log("Off");
-            _input.RayCastClick += OnRayCastClick;
-        }
+        public void Off() => _input.RayCastClick -= OnRayCastClick;
 
         private void OnRayCastClick(Vector3 pointScreen)
         {

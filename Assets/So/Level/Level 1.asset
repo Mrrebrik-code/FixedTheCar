@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Difficulty: 1
   CarTemplate: {fileID: 2382000099197176238, guid: 92e00e93611fcf741a3ab003c79c628d, type: 3}
+  StagesLevel:
+  - {fileID: 11400000, guid: 14cac22a24e544e41bb5a6d421467840, type: 2}

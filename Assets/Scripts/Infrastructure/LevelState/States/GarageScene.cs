@@ -1,4 +1,5 @@
-﻿using Infrastructure.Configs;
+﻿using Factories;
+using Infrastructure.Configs;
 using Infrastructure.LevelState.SceneScripts.Garages;
 using Plugins.DIContainer;
 using Plugins.GameStateMachines.Interfaces;

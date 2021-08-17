@@ -246,7 +246,7 @@ RectTransform:
   m_Children:
   - {fileID: 1950068016}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -493,7 +493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8964760025621485375, guid: 60a8ccd0e0427ad48a1c66e7233c115a, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8964760025621485375, guid: 60a8ccd0e0427ad48a1c66e7233c115a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -581,7 +581,7 @@ GameObject:
   - component: {fileID: 1921530406}
   - component: {fileID: 1921530405}
   m_Layer: 0
-  m_Name: EventSystem
+  m_Name: EventSystem Garage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -633,7 +633,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1950068015
 GameObject:

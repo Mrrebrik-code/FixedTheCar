@@ -8,5 +8,7 @@ namespace Infrastructure.Configs
         [TextArea(1, 4)] public string Wellcome;
         [TextArea(1, 4)] public string FirstFixCar;
         [TextArea(1, 4)] public string HowToStartGame;
+        [TextArea(1, 4)] public string Praise;
+        [TextArea(1, 4)] public string NonPraise;
     }
 }

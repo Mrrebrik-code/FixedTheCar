@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 185440771}
   - component: {fileID: 185440770}
   m_Layer: 0
-  m_Name: EventSystem
+  m_Name: EventSystem Init
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -430,8 +430,8 @@ CanvasGroup:
   m_GameObject: {fileID: 794823139}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &794823145
 MonoBehaviour:

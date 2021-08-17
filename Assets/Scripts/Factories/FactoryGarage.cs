@@ -3,7 +3,7 @@ using Mechanics.Garage;
 using Plugins.DIContainer;
 using UnityEngine;
 
-namespace Infrastructure.LevelState.SceneScripts.Garages
+namespace Factories
 {
     public class FactoryGarage
     {

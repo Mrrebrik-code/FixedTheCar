@@ -1,4 +1,6 @@
-﻿using Mechanics.Garage;
+﻿using System.Collections.Generic;
+using Mechanics.Garage;
+using Mechanics.Interfaces;
 using UnityEngine;
 
 namespace Infrastructure.Configs
@@ -8,5 +10,6 @@ namespace Infrastructure.Configs
     {
         [Range(1,3)]public int Difficulty = 1;
         public Car CarTemplate;
+        public List<StageData> StagesLevel = new List<StageData>(); 
     }
 }

@@ -22,7 +22,7 @@ public class BootStrapGame : MonoBehaviour, ICoroutineRunner
         MakeDontDestroyOnLoad();
         LevelStateMachine levelStateMachine = new LevelStateMachine();
         RegisterDI(levelStateMachine);
-        levelStateMachine.Enter<InitGame>();
+        levelStateMachine.Enter<InitGameScene>();
     }
 
     private void MakeDontDestroyOnLoad()

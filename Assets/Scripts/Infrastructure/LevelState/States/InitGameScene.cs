@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Infrastructure.LevelState.States
 {
-    public class InitGame : IEnterState
+    public class InitGameScene : IEnterState
     {
         private DiBox _diBox = DiBox.MainBox;
 

@@ -57,6 +57,11 @@ namespace Mechanics.Garage
             }
         }
 
+        private void OnDestroy()
+        {
+            _selectorCar.NewCarSelect -= OnNewCarSelect;
+            _selectorCar.Off();
+        }
 
         [Serializable]
         private class GaragePlace
