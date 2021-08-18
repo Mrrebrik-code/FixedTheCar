@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
+using Infrastructure.Configs;
 using Plugins.DIContainer;
 using Plugins.GameStateMachines;
 using Plugins.GameStateMachines.Interfaces;
 using Plugins.Interfaces;
+using Plugins.Sound;
 using Services.IInputs;
 using Services.Interfaces;
 using UnityEngine;
@@ -17,6 +19,7 @@ namespace Infrastructure.LevelState.States
         [DI] private LevelStateMachine _levelStateMachine;
         [DI] private ICoroutineRunner _coroutineRunner;
         [DI] private Curtain _curtain;
+        [DI] private ConfigGame _configGame;
 
         public void Enter()
         {
@@ -32,6 +35,7 @@ namespace Infrastructure.LevelState.States
         private void CreateDi()
         {
             CreateInput();
+            _diBox.RegisterSingle(new SoundSystem(_configGame.TemplateSource, _configGame.startSizePoolSource));
         }
 
         private void CreateInput()

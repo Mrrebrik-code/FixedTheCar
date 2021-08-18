@@ -11,9 +11,12 @@ namespace Infrastructure.Configs
     public class ConfigGame : ScriptableObject
     {
         public Garage TemplateGarage;
+        public int startSizePoolSource = 15;
+        public AudioSource TemplateSource;
         public List<PrompterType> TemplatePrompter;
         public List<ConfigLevel> ConfigLevels;
         
+
         [Serializable]
         public class PrompterType
         {
@@ -23,7 +26,5 @@ namespace Infrastructure.Configs
             [SerializeField] private Prompter _template;
             [SerializeField] private FactoryPrompter.Type _type;
         }
-
-        
     }
 }
