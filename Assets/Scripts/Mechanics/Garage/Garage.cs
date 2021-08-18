@@ -80,9 +80,17 @@ namespace Mechanics.Garage
                     Instantiate(startTemplate, _panelOfStar.transform);
             }
 
-            public void Select() => Lamp.On();
+            public void Select()
+            {
+                Lamp.On();
+                Car.Select();
+            }
 
-            public void Unselect() => Lamp.Off();
+            public void Unselect()
+            {
+                Lamp.Off();
+                Car.Unselect();
+            }
         }
     }
 }

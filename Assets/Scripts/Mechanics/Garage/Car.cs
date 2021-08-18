@@ -1,5 +1,6 @@
 ﻿using System;
 using Infrastructure.Configs;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Mechanics.Garage
@@ -9,14 +10,42 @@ namespace Mechanics.Garage
     {
         public ConfigLevel LevelConfigCar { get; private set; }
         public event Action Selected;
+        public event Action Unselected;
 
-        public void Init(ConfigLevel configLevel) => LevelConfigCar = configLevel;
+        private State _currentState;
+        
+        public void Init(ConfigLevel configLevel)
+        {
+            LevelConfigCar = configLevel;
+            _currentState = State.Unselected;
+        }
 
+        [CanBeNull]
         public Car Select()
         {
-            Selected?.Invoke();
-            return this;
+            if (_currentState == State.Unselected)
+            {
+                Debug.Log("select");
+                _currentState = State.Selected;
+                Selected?.Invoke();
+                return this;
+            }
+            return null;
         }
-        public void Unselect(){}
+
+        public void Unselect()
+        {
+            if (_currentState == State.Selected)
+            {
+                Debug.Log("unselect");
+                _currentState = State.Unselected;
+                Unselected?.Invoke();
+            }
+        }
+        
+        private enum State
+        {
+            Selected, Unselected
+        }
     }
 }
