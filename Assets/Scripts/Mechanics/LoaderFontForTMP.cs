@@ -8,8 +8,6 @@ namespace Mechanics
     [RequireComponent(typeof(TextMeshPro))]
     public class LoaderFontForTMP : MonoBehaviour
     {
-        [DI] private ConfigLocalization _localization;
-
-        private void Awake() => GetComponent<TextMeshPro>().font = _localization.FontLocal;
+        private void Awake() => GetComponent<TextMeshPro>().font = DiBox.MainBox.ResolveSingle<ConfigLocalization>().FontLocal;
     }
 }

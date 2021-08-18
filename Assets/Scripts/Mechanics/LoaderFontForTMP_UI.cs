@@ -9,8 +9,6 @@ namespace Mechanics
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class LoaderFontForTMP_UI : MonoBehaviour
     {
-        [DI] private ConfigLocalization _localization;
-
-        private void Awake() => GetComponent<TextMeshProUGUI>().font = _localization.FontLocal;
+        private void Awake() => GetComponent<TextMeshProUGUI>().font = DiBox.MainBox.ResolveSingle<ConfigLocalization>().FontLocal;
     }
 }
