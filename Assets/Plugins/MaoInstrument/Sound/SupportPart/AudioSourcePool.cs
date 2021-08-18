@@ -22,7 +22,6 @@ namespace Plugins.Sound.SupportPart
         public void AddNew(AudioSource template)
         {
             var sourceOnScene = Object.Instantiate(template, _parentSource, true);
-            Object.DontDestroyOnLoad(sourceOnScene);
             _free.Push(sourceOnScene);
             sourceOnScene.enabled = false;
         }

@@ -10,7 +10,11 @@ namespace Infrastructure.Configs
         [TextArea(1, 4)] public string Wellcome;
         [TextArea(1, 4)] public string FirstFixCar;
         [TextArea(1, 4)] public string HowToStartGame;
-        [TextArea(1, 4)] public string Praise;
-        [TextArea(1, 4)] public string NonPraise;
+        [Header("Number Stage")]
+        [TextArea(1, 4)] public string HellowNumberStage;
+        [TextArea(1, 4)] public string HellowNumberStage2;
+        [TextArea(1, 4)] public string EndNumbeerStage;
+        [TextArea(1, 4)] public string PraiseNumber;
+        [TextArea(1, 4)] public string NonPraiseNumber;
     }
 }

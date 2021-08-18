@@ -49,6 +49,10 @@ namespace Infrastructure.LevelState.SceneScripts.Menu
             _curtain.Fade(() => _levelStateMachine.Enter<GarageScene>(), _durationTransit);
         }
 
-        private void OnDestroy() => _tweenCamera.Kill();
+        private void OnDestroy()
+        {
+            _input.AnyInput -= OnAnyInput;
+            _tweenCamera.Kill();
+        }
     }
 }

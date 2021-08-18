@@ -21,7 +21,7 @@ namespace Infrastructure.LevelState.SceneScripts.Game
         {
             var stages = CreateStages();
             _curtain.Unfade();
-            stages[0].ApplayPlayer();
+            stages[0].Start();
             Inited?.Invoke(stages);
         }
 

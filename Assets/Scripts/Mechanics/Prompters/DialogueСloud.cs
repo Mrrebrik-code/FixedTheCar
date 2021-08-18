@@ -18,7 +18,7 @@ namespace Mechanics.Prompters
         
         private Tween _tweenOpenClose;
         private Coroutine _textUpdate;
-
+        
         public void Say(string mes, Action callback = null)
         {
             Clear();
@@ -43,8 +43,17 @@ namespace Mechanics.Prompters
             _groupCloud.alpha = 0;
         }
 
-        private void StartTextUpdate(string mes, Action callback) 
-            => _textUpdate = StartCoroutine(MakeText(mes, _configGame.SpeedCurveTextPrompter.Evaluate(mes.Length), callback));
+        private void StartTextUpdate(string mes, Action callback)
+        {
+            StopTextUpdate();
+            _textUpdate = StartCoroutine(MakeText(mes, _configGame.SpeedCurveTextPrompter.Evaluate(mes.Length), callback));
+        }
+
+        private void StopTextUpdate()
+        {
+            if(_textUpdate!=null)
+                StopCoroutine(_textUpdate);
+        }
 
         private void Open(Action onComplete = null)
         {
@@ -56,8 +65,7 @@ namespace Mechanics.Prompters
         {
             if (_tweenOpenClose != null)
                 _tweenOpenClose.Kill();
-            if (_textUpdate != null)
-                StopCoroutine(_textUpdate);
+            StopTextUpdate();
             Clear();
         }
 

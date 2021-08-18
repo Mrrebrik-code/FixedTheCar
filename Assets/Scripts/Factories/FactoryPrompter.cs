@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Infrastructure.Configs;
 using Mechanics.Prompters;
 using Plugins.DIContainer;
@@ -30,6 +31,16 @@ namespace Factories
                 instance.gameObject.SetActive(false);
             }
         }
+
+        public void ChangeAndSayAnimated(Type type, string mes, Action callback = null)
+        {
+            _dictPrompter[_current].Hide(() =>
+            {
+                ChangeAt(type).Unhide(() => Current.Say(mes, callback));
+            });
+        }
+        
+        public void ChangeAndSayNoneAnimated(Type type, string mes, Action callback = null) => ChangeAt(type).Say(mes,callback);
 
         public Prompter ChangeAt(Type newType)
         {

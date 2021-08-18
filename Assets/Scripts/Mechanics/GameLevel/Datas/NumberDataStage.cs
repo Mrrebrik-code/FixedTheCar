@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 using Mechanics.GameLevel.Stages;
 using Mechanics.Interfaces;
 using UnityEngine;
@@ -12,6 +13,8 @@ namespace Mechanics.GameLevel.Datas
         public int Max;
         public List<MathPattern> Patterns;
 
+        public MathPattern RandomPattern => Patterns[UnityEngine.Random.Range(0, Patterns.Count)];
+        
         protected override bool ValidateMethod(Stage stageTocheck)
         {
             if (Min >= Max)
@@ -39,6 +42,24 @@ namespace Mechanics.GameLevel.Datas
                 }
             }
             public List<int> Numbers;
+
+            public string GetPatternString()
+            {
+                StringBuilder builder =new StringBuilder();
+                foreach (var num in Numbers)
+                {
+                    if (num > 0)
+                        builder.Append("+");
+                    else
+                        builder.Append("-");
+                    builder.Append(num.ToString());
+                }
+                builder.Append("=?");
+                string result = builder.ToString();
+                if (result[0] == '+')
+                    result = result.Remove(0, 1);
+                return result;
+            }
         }
     }
 

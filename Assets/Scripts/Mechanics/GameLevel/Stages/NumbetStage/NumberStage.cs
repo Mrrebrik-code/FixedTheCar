@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Factories;
 using Infrastructure.Configs;
 using Mechanics.GameLevel.Datas;
+using Mechanics.GameLevel.Stages.StateMachine;
 using Mechanics.Interfaces;
 using Plugins.DIContainer;
+using Services.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
@@ -15,32 +18,16 @@ namespace Mechanics.GameLevel.Stages
     {
         public override SizeElement SizeElement => _sizeElement;
         [SerializeField] private SizeElement _sizeElement;
+        
         [SerializeField] private Engine _engine;
         [SerializeField] private BoxGenerator _boxGenerator;
         [SerializeField] private BoxClickHandler _clickHandler;
+        [SerializeField] private NumberStageStateMachine _numberStageStateMachine;
 
         [DI] private FactorySpark _factorySpark;
-        [DI] private FactoryPrompter _factoryPrompter;
-        [DI] private ConfigLocalization _localization;
         
         private NumberDataStage _data;
         private NumberDataStage.MathPattern _currentMathExpamle;
-        
-        public override void ApplayPlayer()
-        {
-            _engine.Completed += OnCompletedEngine;
-            _engine.NewStage += OnNewStage;
-            _clickHandler.SuccessClick += OnSuccessClick;
-            _clickHandler.FailClick += OnFailClick;
-            _engine.GenerateShadow();
-        }
-
-        public override void RemovePlayer()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Restart() => Debug.LogWarning("This stage with out restart");
 
         public override void Init(StageData stageData)
         {
@@ -49,35 +36,17 @@ namespace Mechanics.GameLevel.Stages
             _data = stageData as NumberDataStage;
         }
 
-        private void StartStage()
+        public override void Start()
         {
-            _currentMathExpamle = GetRandomPattern();
-            _clickHandler.Init(_boxGenerator.GenerateBox(_data, _currentMathExpamle), _currentMathExpamle, _engine);
-        }
-        
-        private void OnFailClick()
-        {
-            Say(FactoryPrompter.Type.WTF, _localization.NonPraise, async ()=>
-            {
-                await Task.Delay(900);
-                Say(FactoryPrompter.Type.Idea, GetNumberMessageForMouse());
-            });
+            _engine.Completed += OnCompletedEngine;
+            _engine.NewStage += OnNewStage;
+            _clickHandler.FailClick += OnFailClick;
+            _numberStageStateMachine.StartMe();
         }
 
-        private void OnSuccessClick() => Say(FactoryPrompter.Type.WTF, _localization.Praise);
+        public string CurrentPatternString() => _currentMathExpamle.GetPatternString();
 
-        private void OnNewStage()
-        {
-            StartStage();
-            Say(FactoryPrompter.Type.Idea, GetNumberMessageForMouse());
-            _factoryPrompter.Current.Unhide();
-        }
-
-        private void Say(FactoryPrompter.Type type, string mes, Action callback = null)
-        {
-            _factoryPrompter.ChangeAt(type);
-            _factoryPrompter.Current.Say(mes, () => callback?.Invoke());
-        }
+        private void OnFailClick() => ChangePatternWithOdinaryResult();
 
         private void OnCompletedEngine()
         {
@@ -85,23 +54,15 @@ namespace Mechanics.GameLevel.Stages
             Completed?.Invoke();
         }
 
-        private string GetNumberMessageForMouse()
+        private void OnNewStage() => CreateBox();
+
+        private void CreateBox() 
+            => _clickHandler.Init(_boxGenerator.GenerateBox(_data, _currentMathExpamle = _data.RandomPattern), _currentMathExpamle, _engine);
+
+        private void ChangePatternWithOdinaryResult()
         {
-            string mes = "";
-            foreach (var num in _currentMathExpamle.Numbers)
-            {
-                if(num>0)
-                    mes +="+"+ num.ToString();
-                else
-                    mes += "-" + num.ToString();
-            }
-
-            if (mes[0] == '+')
-                mes = mes.Remove(0, 1);
-            mes += "=?";
-            return mes;
+            var listPattern = _data.Patterns.Where(x => x.FinalValue == _currentMathExpamle.FinalValue).ToList();
+            _currentMathExpamle = listPattern[Random.Range(0, listPattern.Count)];
         }
-
-        private NumberDataStage.MathPattern GetRandomPattern() => _data.Patterns[Random.Range(0, _data.Patterns.Count)];
     }
 }
