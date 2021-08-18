@@ -43,11 +43,8 @@ namespace Mechanics.Prompters
             _groupCloud.alpha = 0;
         }
 
-        private void StartTextUpdate(string mes, Action callback)
-        {
-            Debug.Log($"{mes.Length} = {_configGame.SpeedCurveTextPrompter.Evaluate(mes.Length)}");
-            _textUpdate = StartCoroutine(MakeText(mes, _configGame.SpeedCurveTextPrompter.Evaluate(mes.Length), callback));
-        }
+        private void StartTextUpdate(string mes, Action callback) 
+            => _textUpdate = StartCoroutine(MakeText(mes, _configGame.SpeedCurveTextPrompter.Evaluate(mes.Length), callback));
 
         private void Open(Action onComplete = null)
         {
