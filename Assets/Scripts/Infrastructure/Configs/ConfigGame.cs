@@ -13,6 +13,8 @@ namespace Infrastructure.Configs
         public Garage TemplateGarage;
         public int startSizePoolSource = 15;
         public AudioSource TemplateSource;
+        [Tooltip("По горизонтале колличество символов в строке, по вертикале скорость набора")]
+        public AnimationCurve SpeedCurveTextPrompter;
         public List<PrompterType> TemplatePrompter;
         public List<ConfigLevel> ConfigLevels;
         

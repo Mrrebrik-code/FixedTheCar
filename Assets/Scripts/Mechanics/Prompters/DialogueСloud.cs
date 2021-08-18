@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using DG.Tweening;
+using Infrastructure.Configs;
+using Plugins.DIContainer;
 using TMPro;
 using UnityEngine;
 
@@ -11,8 +13,9 @@ namespace Mechanics.Prompters
         [SerializeField] private CanvasGroup _groupCloud;
         [SerializeField] private TextMeshProUGUI _label;
         [Min(0)] [SerializeField] private float _durationCanvas;
-        [Min(0.25f)][SerializeField] private float _defaultDurationText;
 
+        [DI] private ConfigGame _configGame;
+        
         private Tween _tweenOpenClose;
         private Coroutine _textUpdate;
 
@@ -40,7 +43,11 @@ namespace Mechanics.Prompters
             _groupCloud.alpha = 0;
         }
 
-        private void StartTextUpdate(string mes, Action callback) => _textUpdate = StartCoroutine(MakeText(mes, _defaultDurationText, callback));
+        private void StartTextUpdate(string mes, Action callback)
+        {
+            Debug.Log($"{mes.Length} = {_configGame.SpeedCurveTextPrompter.Evaluate(mes.Length)}");
+            _textUpdate = StartCoroutine(MakeText(mes, _configGame.SpeedCurveTextPrompter.Evaluate(mes.Length), callback));
+        }
 
         private void Open(Action onComplete = null)
         {
@@ -62,7 +69,7 @@ namespace Mechanics.Prompters
             for (int i = 0; i < mes.Length; i++)
             {
                 _label.text += mes[i];
-                yield return new WaitForSeconds(duration/mes.Length);
+                yield return new WaitForSeconds(duration);
             }
             callback?.Invoke();
         }

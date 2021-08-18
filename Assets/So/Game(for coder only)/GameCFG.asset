@@ -13,6 +13,41 @@ MonoBehaviour:
   m_Name: GameCFG
   m_EditorClassIdentifier: 
   TemplateGarage: {fileID: 6063992734540445619, guid: 98ed148e1857d82469b3c7797d947398, type: 3}
+  startSizePoolSource: 15
+  TemplateSource: {fileID: 2158239556063573478, guid: ce433c11672d83a47b4b06ba3d5bb2bd, type: 3}
+  SpeedCurveTextPrompter:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 10
+      inSlope: -0.15612026
+      outSlope: -0.15612026
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 21.174152
+      value: 6.694286
+      inSlope: -0.17404445
+      outSlope: -0.17404445
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 30
+      value: 5
+      inSlope: -0.19196863
+      outSlope: -0.19196863
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   TemplatePrompter:
   - _template: {fileID: 6719651982788479548, guid: fb3f06cdc7baf5642bfb11c146429556, type: 3}
     _type: 1
