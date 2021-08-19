@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Mechanics.GameLevel.Datas;
+using Mechanics.GameLevel.Stages.NumbetStage.Spark;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Mechanics.GameLevel.Stages
+namespace Mechanics.GameLevel.Stages.NumbetStage
 {
     public class BoxGenerator : MonoBehaviour
     {

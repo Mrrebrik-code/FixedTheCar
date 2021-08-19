@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Mechanics.Interfaces
+namespace Mechanics.GameLevel.Stages
 {
     public abstract class StageData : ScriptableObject
     {

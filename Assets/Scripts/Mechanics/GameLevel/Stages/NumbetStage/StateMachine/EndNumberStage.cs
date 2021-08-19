@@ -2,7 +2,7 @@
 using Infrastructure.Configs;
 using Plugins.DIContainer;
 
-namespace Mechanics.GameLevel.Stages.StateMachine
+namespace Mechanics.GameLevel.Stages.NumbetStage.StateMachine
 {
     public class EndNumberStage : NumberStageState
     {

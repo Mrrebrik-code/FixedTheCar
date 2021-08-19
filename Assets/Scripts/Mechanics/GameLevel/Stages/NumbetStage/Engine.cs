@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Factories;
+using Mechanics.GameLevel.Stages.NumbetStage.Spark;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
-namespace Mechanics.GameLevel.Stages
+namespace Mechanics.GameLevel.Stages.NumbetStage
 {
     public class Engine : MonoBehaviour
     {

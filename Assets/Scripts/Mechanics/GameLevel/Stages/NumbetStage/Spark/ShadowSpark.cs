@@ -1,9 +1,8 @@
 ﻿using System;
-using Factories;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Mechanics.GameLevel.Stages
+namespace Mechanics.GameLevel.Stages.NumbetStage.Spark
 {
     public class ShadowSpark : MonoBehaviour
     {

@@ -1,10 +1,11 @@
-﻿using Factories;
+﻿using System.Collections;
+using Factories;
 using Infrastructure.Configs;
 using Plugins.DIContainer;
 using Services.Interfaces;
 using UnityEngine;
 
-namespace Mechanics.GameLevel.Stages.StateMachine
+namespace Mechanics.GameLevel.Stages.NumbetStage.StateMachine
 {
     public class FailNumberStage : NumberStageState
     {
@@ -23,14 +24,22 @@ namespace Mechanics.GameLevel.Stages.StateMachine
             _input.AnyInput += OnAnyInput;
         }
 
-        public override void Off()
-        {
-            _input.AnyInput -= OnAnyInput;
-            _stateToTransit = null;
-        }
+        public override void Off() => _stateToTransit = null;
 
         public override State TransitToOrNull() => _stateToTransit;
 
-        private void OnAnyInput() => _stateToTransit = _mathPatternState;
+        private void OnAnyInput()
+        {
+            _input.AnyInput -= OnAnyInput;
+            StartCoroutine(ChangeState());
+        }
+
+        private IEnumerator ChangeState()
+        {
+            yield return null;
+            yield return null;
+            yield return null;
+            _stateToTransit = _mathPatternState;
+        }
     }
 }

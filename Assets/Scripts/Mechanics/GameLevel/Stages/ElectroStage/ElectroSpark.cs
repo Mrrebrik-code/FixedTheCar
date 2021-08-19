@@ -1,0 +1,99 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using DG.Tweening;
+using PathCreation;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+namespace Mechanics.GameLevel.Stages.ElectroStage
+{
+    public class ElectroSpark : MonoBehaviour
+    {
+        public event Action Finished;
+        public event Action Fail;
+
+        [SerializeField] private GraphicRaycaster _graphicRaycaster;
+        [Min(1)][SerializeField] private float _durationMovePath;
+        [Min(1)][SerializeField] private float _durationFadeImage;
+        [SerializeField] private Image _image;
+        
+        private Coroutine _moveAction;
+        private Tween _tweenImage;
+
+        private void Awake() => _image.DOFade(0, 0.000001f);
+
+        public void Move(PathCreator pathCreator)
+        {
+            if(_moveAction!=null)
+                return;
+            if(_tweenImage!=null)
+                _tweenImage.Kill();
+            _moveAction = StartCoroutine(MoveAction(pathCreator));
+        }
+
+        private IEnumerator MoveAction(PathCreator pathCreator)
+        {
+            float passDuration = 0;
+            _image.DOFade(1, 0.0001f);
+            while (passDuration<_durationMovePath)
+            {
+                Move(pathCreator, passDuration);
+                if (CheckTapeAtBroke(RayCastTape()))
+                    BrokeMove();
+                passDuration += Time.deltaTime;
+                yield return null;
+            }
+            passDuration = _durationMovePath;
+            Move(pathCreator, passDuration);
+            _moveAction = null;
+            Finished?.Invoke();
+        }
+
+        private void BrokeMove()
+        {
+            if (_moveAction == null)
+            {
+                Debug.LogWarning("MoveAction is NULLL!!!");
+                return;
+            }
+            StopCoroutine(_moveAction);
+            _tweenImage = _image.DOFade(0, _durationFadeImage).OnKill(()=>_tweenImage = null);
+            Fail?.Invoke();
+        }
+
+        private bool CheckTapeAtBroke(List<TapePlace> rayCastTape)
+        {
+            if (rayCastTape.Count == 0)
+                return false;
+            Debug.Log("________");
+            foreach (var place in rayCastTape)
+            {
+                Debug.Log(place.name, place);
+                if (!place.IsFixed)
+                {
+                    Debug.Log("________");
+                    return true;
+                }
+            }
+            Debug.Log("________");
+            return false;
+        }
+
+        private void Move(PathCreator pathCreator, float passDuration) 
+            => transform.position = pathCreator.path.GetPointAtTime(passDuration / _durationMovePath, EndOfPathInstruction.Stop);
+
+        private List<TapePlace> RayCastTape()
+        {
+            List<RaycastResult> resultsRay = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(new PointerEventData(EventSystem.current), resultsRay);
+            Debug.Log("Поиск прдметов подомной - " + resultsRay.Count);
+            List<TapePlace> result = new List<TapePlace>();
+            foreach (var ray in resultsRay)
+                if (ray.gameObject.TryGetComponent<TapePlace>(out var place))
+                    result.Add(place);
+            return result;
+        }
+    }
+}

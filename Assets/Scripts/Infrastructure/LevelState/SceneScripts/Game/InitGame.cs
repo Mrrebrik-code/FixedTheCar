@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Infrastructure.Configs;
+using Mechanics.GameLevel.Stages;
 using Mechanics.Interfaces;
 using Plugins.DIContainer;
 using Plugins.Interfaces;

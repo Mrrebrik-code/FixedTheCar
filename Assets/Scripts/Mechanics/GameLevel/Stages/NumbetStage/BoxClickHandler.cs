@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using Factories;
 using Mechanics.GameLevel.Datas;
+using Mechanics.GameLevel.Stages.NumbetStage.Spark;
 using Plugins.DIContainer;
 using UnityEngine;
 
-namespace Mechanics.GameLevel.Stages
+namespace Mechanics.GameLevel.Stages.NumbetStage
 {
     public class BoxClickHandler : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Mechanics.Interfaces
+namespace Mechanics.GameLevel.Stages
 {
     public abstract class Stage : MonoBehaviour
     {

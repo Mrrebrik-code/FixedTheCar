@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Linq;
-using System.Threading.Tasks;
 using Factories;
-using Infrastructure.Configs;
 using Mechanics.GameLevel.Datas;
-using Mechanics.GameLevel.Stages.StateMachine;
-using Mechanics.Interfaces;
+using Mechanics.GameLevel.Stages.NumbetStage.StateMachine;
 using Plugins.DIContainer;
-using Services.Interfaces;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
-namespace Mechanics.GameLevel.Stages
+namespace Mechanics.GameLevel.Stages.NumbetStage
 {
     public class NumberStage : Stage
     {

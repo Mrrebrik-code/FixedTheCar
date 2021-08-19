@@ -1,14 +1,18 @@
 ﻿using System.Collections.Generic;
+using Plugins.DIContainer;
+using Services.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Mechanics.GameLevel.Stages
+namespace Mechanics.GameLevel.Stages.NumbetStage.Spark
 {
     public class Spark : MonoBehaviour, IDragHandler, IEndDragHandler
     {
+        [DI] private IInput _input;
+        
         public void OnDrag(PointerEventData eventData)
         {
-            Vector3 newPosition =Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 newPosition =Camera.main.ScreenToWorldPoint(_input.InputScreenPosition);
             newPosition.z = 0;
             transform.position = newPosition;
         }

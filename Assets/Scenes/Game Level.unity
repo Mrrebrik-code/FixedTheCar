@@ -343,6 +343,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8964760024815819706, guid: 60a8ccd0e0427ad48a1c66e7233c115a, type: 3}
+      propertyPath: m_Padding.m_Top
+      value: -22
+      objectReference: {fileID: 0}
+    - target: {fileID: 8964760024815819706, guid: 60a8ccd0e0427ad48a1c66e7233c115a, type: 3}
+      propertyPath: m_Padding.m_Left
+      value: 53
+      objectReference: {fileID: 0}
     - target: {fileID: 8964760025621485363, guid: 60a8ccd0e0427ad48a1c66e7233c115a, type: 3}
       propertyPath: m_Name
       value: PlacePromter

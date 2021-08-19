@@ -7,6 +7,8 @@ namespace Services.Interfaces
     {
         event Action AnyInput;
         event Action<Vector3> RayCastClick;
+        
+        public Vector3 InputScreenPosition { get; }
 
         void Update();
     }

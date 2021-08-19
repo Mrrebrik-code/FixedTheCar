@@ -38,6 +38,8 @@ namespace Mechanics.Prompters
                 );
         }
 
+        
+        
         public override void Say(string message, Action callback = null) => _dialogueСloud.Say(message, callback);
 
         public override void Hide(Action action = null)

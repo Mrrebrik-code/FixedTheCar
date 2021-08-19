@@ -5,7 +5,7 @@ using Plugins.DIContainer;
 using Services.Interfaces;
 using UnityEngine;
 
-namespace Mechanics.GameLevel.Stages.StateMachine
+namespace Mechanics.GameLevel.Stages.NumbetStage.StateMachine
 {
     public class GreetingState : NumberStageState
     {

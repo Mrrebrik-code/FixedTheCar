@@ -1,4 +1,4 @@
-﻿namespace Mechanics.GameLevel.Stages.StateMachine
+﻿namespace Mechanics.GameLevel.Stages.NumbetStage.StateMachine
 {
     public abstract class NumberStageState : State
     {

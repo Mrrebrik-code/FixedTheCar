@@ -10,6 +10,8 @@ namespace Services.IInputs
         public event Action AnyInput;
         public event Action<Vector3> RayCastClick;
 
+        public Vector3 InputScreenPosition => Input.mousePosition;
+
         public void Update()
         {
             if(Input.anyKey) AnyInput?.Invoke();
