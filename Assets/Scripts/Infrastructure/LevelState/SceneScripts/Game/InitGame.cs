@@ -2,29 +2,67 @@
 using System.Collections.Generic;
 using Infrastructure.Configs;
 using Mechanics.GameLevel.Stages;
+using Mechanics.GameLevel.Stages.ElectroStage.Machines;
 using Mechanics.Interfaces;
 using Plugins.DIContainer;
 using Plugins.Interfaces;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Infrastructure.LevelState.SceneScripts.Game
 {
     public class InitGame : MonoBehaviour
     {
         public event Action<List<Stage>> Inited;
+
+        [SerializeField] private Player _playerTemplate;
+        [SerializeField] private Button _nextLevelButton;
         
         [DI] private Curtain _curtain;
         [DI] private ConfigLevel _configLevel;
 
         private DiBox _diBox = DiBox.MainBox;
-        
+        private List<Stage> _stages;
+        private Player _player;
+
+        private void Awake()
+        {
+            _nextLevelButton.onClick.AddListener(NextLevel);
+            _nextLevelButton.gameObject.SetActive(false);
+        }
+
         private void Start()
         {
-            var stages = CreateStages();
+            _stages = CreateStages();
+            _player = CreatePlayer();
+            _stages[0].Start(_player, true);
+            _stages[0].Completed += OnCompleted;
+            Inited?.Invoke(_stages);
+            
             _curtain.Unfade();
-            stages[0].Start();
-            Inited?.Invoke(stages);
         }
+
+        private void OnCompleted() => _nextLevelButton.gameObject.SetActive(true);
+
+        private void NextLevel()
+        {
+            _stages[0].Completed -= OnCompleted;
+            _stages.RemoveAt(0);
+            if (_stages.Count > 0)
+            {
+                _stages[0].Start(_player, false);
+                _stages[0].Completed += OnCompleted;
+            }
+            else
+            {
+                Debug.Log("Level is and");
+            }
+            _nextLevelButton.gameObject.SetActive(false);
+        }
+
+        private void OnDestroy() => _nextLevelButton.onClick.RemoveListener(NextLevel);
+
+        private Player CreatePlayer() => _diBox.CreatePrefab(_playerTemplate);
 
         private List<Stage> CreateStages()
         {

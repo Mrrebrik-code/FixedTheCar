@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Drawing;
 using Mechanics.GameLevel.Stages.ElectroStage.Machines;
+using Mechanics.Interfaces;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,19 +9,34 @@ namespace Mechanics.GameLevel.Stages.ElectroStage
 {
     public class ElectroStage : Stage
     {
-        public override SizeElement SizeElement { get; }
+        public override SizeElement SizeElement => _sizeElement;
         public int MaxBreakeWires => _wires.MaxBreakePart;
 
+        [SerializeField] private SizeElement _sizeElement;
         [SerializeField] private ElectroStageStateMachine _stateMachine;
         [SerializeField] private Wires _wires;
         [SerializeField] private ElectroPath electroPath;
-
-        private ElectroStageData _stageData;
+        [SerializeField] private AbsTransitPlayer _transitPlayer;
+        [SerializeField] private Transform _pointCamera;
+        [SerializeField] private Transform _pointPlayer;
         
-        public override void Start()
+        private ElectroStageData _stageData;
+
+        public override void Start(Player player, bool isInstantaneousTrnasit)
+        {
+            _wires.Break(Random.Range(_stageData.MinBreakWires, _stageData.MaxBreakeWires+1));
+            if (isInstantaneousTrnasit) InstantaneousTransit(player);
+            else NormalTransit(player);
+        }
+
+        private void NormalTransit(Player player) => _transitPlayer.Transit(player, _pointCamera.position, StartStage);
+
+        private void InstantaneousTransit(Player player) 
+            => _transitPlayer.InstantaneousTransit(player, _pointCamera.position, _pointPlayer.position, () => StartStage());
+
+        private void StartStage()
         {
             _stateMachine.StartMe();
-            _wires.Break(Random.Range(_stageData.MinBreakWires, _stageData.MaxBreakeWires+1));
             electroPath.Finished += OnFinished;
         }
 

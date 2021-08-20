@@ -3,8 +3,10 @@ using System.Linq;
 using Factories;
 using Mechanics.GameLevel.Datas;
 using Mechanics.GameLevel.Stages.NumbetStage.StateMachine;
+using Mechanics.Interfaces;
 using Plugins.DIContainer;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
 namespace Mechanics.GameLevel.Stages.NumbetStage
@@ -18,6 +20,9 @@ namespace Mechanics.GameLevel.Stages.NumbetStage
         [SerializeField] private BoxGenerator _boxGenerator;
         [SerializeField] private BoxClickHandler _clickHandler;
         [SerializeField] private NumberStageStateMachine _numberStageStateMachine;
+        [SerializeField] private AbsTransitPlayer _absTransitPlayer;
+        [SerializeField] private Transform _pointCamera;
+        [SerializeField] private Transform _poinPlayer;
 
         [DI] private FactorySpark _factorySpark;
         
@@ -31,7 +36,13 @@ namespace Mechanics.GameLevel.Stages.NumbetStage
             _data = stageData as NumberDataStage;
         }
 
-        public override void Start()
+        public override void Start(Player player, bool isInstantaneousTrnasit)
+        {
+            if(isInstantaneousTrnasit) _absTransitPlayer.InstantaneousTransit(player, _pointCamera.position, _poinPlayer.position, StartMe);
+            else _absTransitPlayer.Transit(player, _pointCamera.position, StartMe);
+        }
+
+        private void StartMe()
         {
             _engine.Completed += OnCompletedEngine;
             _engine.NewStage += OnNewStage;
