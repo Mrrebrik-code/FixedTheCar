@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using Factories;
 using Mechanics.Interfaces;
 using Plugins.DIContainer;
 using Plugins.Interfaces;
@@ -13,6 +13,7 @@ namespace Mechanics.TransitPlayer
         [SerializeField] private float _duration;
         
         [DI] private Curtain _curtain;
+        [DI] private FactoryPrompter _factoryPrompter;
 
         private void Awake()
         {
@@ -20,6 +21,13 @@ namespace Mechanics.TransitPlayer
         }
 
         public override void Transit(Player player,Vector3 pointCamera,  Action callback)
+            => _factoryPrompter.Current.Say("", 
+                ()=>_factoryPrompter.Current.Hide(
+                    ()=>Move(player, pointCamera, callback)
+                    )
+                );
+
+        private void Move(Player player, Vector3 pointCamera, Action callback)
         {
             _curtain.Fade(() =>
             {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Infrastructure.Configs;
+using Mechanics;
 using Mechanics.GameLevel.Stages;
-using Mechanics.GameLevel.Stages.ElectroStage.Machines;
 using Mechanics.Interfaces;
 using Plugins.DIContainer;
 using Plugins.Interfaces;
@@ -35,7 +35,7 @@ namespace Infrastructure.LevelState.SceneScripts.Game
         {
             _stages = CreateStages();
             _player = CreatePlayer();
-            _stages[0].Start(_player, true);
+            _stages[0].StartStage(_player, true);
             _stages[0].Completed += OnCompleted;
             Inited?.Invoke(_stages);
             
@@ -50,7 +50,7 @@ namespace Infrastructure.LevelState.SceneScripts.Game
             _stages.RemoveAt(0);
             if (_stages.Count > 0)
             {
-                _stages[0].Start(_player, false);
+                _stages[0].StartStage(_player, false);
                 _stages[0].Completed += OnCompleted;
             }
             else

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Mechanics.GameLevel.Stages;
-using Mechanics.GameLevel.Stages.NumbetStage.Spark;
+using Mechanics.GameLevel.Stages.NumbetStageParts.Spark;
 using Plugins.DIContainer;
 using UnityEngine;
 using Random = UnityEngine.Random;

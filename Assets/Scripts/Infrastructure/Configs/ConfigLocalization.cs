@@ -13,18 +13,24 @@ namespace Infrastructure.Configs
         [TextArea(1, 4)] public string FirstFixCar;
         [TextArea(1, 4)] public string HowToStartGame;
         [Header("Number Stage")]
-        [TextArea(1, 4)] public string HellowNumberStage;
-        [TextArea(1, 4)] public string HellowNumberStage2;
-        [TextArea(1, 4)] public string EndNumbeerStage;
+        [TextArea(1, 4)] public string HelloNumberStage;
+        [TextArea(1, 4)] public string HelloNumberStage2;
+        [TextArea(1, 4)] public string EndNumberStage;
         [TextArea(1, 4)] public string PraiseNumber;
         [TextArea(1, 4)] public string NonPraiseNumber;
         [Header("Electro Stage")]
         [TextArea(1, 4)] public string TakeAnyWire;
-        [TextArea(1, 4)] public string HellowElectroStage;
+        [TextArea(1, 4)] public string HelloElectroStage;
         [TextArea(1, 4)] public string CorrectSetWires;
         [TextArea(1, 4)] public string FailSetWires;
         [TextArea(1, 4)] public string FailElectroMove;
         [TextArea(1, 4)] public string StartTapeStage;
         [TextArea(1, 4)] public string FinishElectroStage;
+        [Header("Canistro Stage")] 
+        [TextArea(1, 4)] public string HelloCanistorStage;
+        [TextArea(1, 4)] public string ChooseAnyCanisters;
+        [TextArea(1, 4)] public string СorrectlyChooseCanistro;
+        [TextArea(1, 4)] public string FailChooseCanistro;
+        [TextArea(1, 4)] public string EndCanistrostage;
     }
 }

@@ -1,7 +1,8 @@
-﻿using Mechanics.GameLevel.Stages.ElectroStage.Machines;
+﻿using Mechanics.GameLevel.Stages;
+using Mechanics.GameLevel.Stages.ElectroStageParts;
 using UnityEngine;
 
-namespace Mechanics.GameLevel.Stages.ElectroStage
+namespace Mechanics.GameLevel.Datas
 {
     [CreateAssetMenu(menuName = "Config/Stages/Electro", order = 51)]
     public class ElectroStageData : StageData
