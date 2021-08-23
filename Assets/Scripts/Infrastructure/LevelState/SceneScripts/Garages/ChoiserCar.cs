@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Infrastructure.LevelState.SceneScripts.Garages
 {
-    public class ControlGarage : MonoBehaviour
+    public class ChoiserCar : MonoBehaviour
     {
         [SerializeField] private InitGarage _initGarage;
         [SerializeField] private FactoryPrompter _factoryPrompter;

@@ -5,6 +5,7 @@ using Mechanics.Garage;
 using Plugins.DIContainer;
 using Plugins.GameStateMachines;
 using Plugins.Interfaces;
+using Services.Curtains.GarageCurtain;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,8 @@ namespace Infrastructure.LevelState.SceneScripts.Garages
     public class GarageChangeStateGame : MonoBehaviour
     {
         [SerializeField] private Button _buttonNextLevel;
+        [SerializeField] private Button _exitFromGarageButton;
+        [SerializeField] private GarageCurtain _garageCurtain;
         
         [DI] private SelectorCar _selectorCar;
         [DI] private LevelStateMachine _levelStateMachine;
@@ -23,12 +26,27 @@ namespace Infrastructure.LevelState.SceneScripts.Garages
             ChangeButtonIntractable(_selectorCar.SelectedCar);
             _selectorCar.NewCarSelect += OnNewCarSelect;
             _buttonNextLevel.onClick.AddListener(StartGame);
+            _exitFromGarageButton.onClick.AddListener(OnExitGarage);
+        }
+
+        private void OnExitGarage()
+        {
+            TurnOffAllButton();
+            _selectorCar.Off();
+            _garageCurtain.Fade(()=>_curtain.Fade(()=>_levelStateMachine.Enter<MainMenu>()));
         }
 
         private void StartGame()
         {
-            _curtain.Fade(()=>_levelStateMachine.Enter<GameScene, ConfigLevel>(_selectorCar.SelectedCar.LevelConfigCar));
+            TurnOffAllButton();
             _selectorCar.Off();
+            _curtain.Fade(()=>_levelStateMachine.Enter<GameScene, ConfigLevel>(_selectorCar.SelectedCar.LevelConfigCar));
+        }
+
+        private void TurnOffAllButton()
+        {
+            _buttonNextLevel.interactable = false;
+            _exitFromGarageButton.interactable = false;
         }
 
         private void OnDestroy() => _selectorCar.NewCarSelect -= OnNewCarSelect;
