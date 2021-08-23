@@ -535,7 +535,7 @@ GameObject:
   - component: {fileID: 3887203435759538925}
   - component: {fileID: 1283684326888703821}
   m_Layer: 0
-  m_Name: Stage
+  m_Name: NumberStageStage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

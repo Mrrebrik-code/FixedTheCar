@@ -25,7 +25,6 @@ namespace Mechanics.Garage
         {
             if (_currentState == State.Unselected)
             {
-                Debug.Log("select");
                 _currentState = State.Selected;
                 Selected?.Invoke();
                 return this;
@@ -37,7 +36,6 @@ namespace Mechanics.Garage
         {
             if (_currentState == State.Selected)
             {
-                Debug.Log("unselect");
                 _currentState = State.Unselected;
                 Unselected?.Invoke();
             }

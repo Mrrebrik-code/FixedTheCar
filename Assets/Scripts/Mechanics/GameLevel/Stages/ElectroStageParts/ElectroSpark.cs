@@ -14,13 +14,14 @@ namespace Mechanics.GameLevel.Stages.ElectroStageParts
         public event Action Finished;
         public event Action Fail;
 
-        [SerializeField] private GraphicRaycaster _graphicRaycaster;
         [Min(1)][SerializeField] private float _durationMovePath;
         [Min(1)][SerializeField] private float _durationFadeImage;
         [SerializeField] private Image _image;
+        [SerializeField] private float _overlapRaduis; 
         
         private Coroutine _moveAction;
         private Tween _tweenImage;
+        
 
         private void Awake() => _image.DOFade(0, 0.000001f);
 
@@ -53,12 +54,10 @@ namespace Mechanics.GameLevel.Stages.ElectroStageParts
 
         private void BrokeMove()
         {
-            if (_moveAction == null)
-            {
-                Debug.LogWarning("MoveAction is NULLL!!!");
-                return;
-            }
+            if (_moveAction == null) 
+                Debug.LogError("MoveAction is NULLL!!!");
             StopCoroutine(_moveAction);
+            _moveAction = null;
             _tweenImage = _image.DOFade(0, _durationFadeImage).OnKill(()=>_tweenImage = null);
             Fail?.Invoke();
         }
@@ -67,17 +66,9 @@ namespace Mechanics.GameLevel.Stages.ElectroStageParts
         {
             if (rayCastTape.Count == 0)
                 return false;
-            Debug.Log("________");
             foreach (var place in rayCastTape)
-            {
-                Debug.Log(place.name, place);
                 if (!place.IsFixed)
-                {
-                    Debug.Log("________");
                     return true;
-                }
-            }
-            Debug.Log("________");
             return false;
         }
 
@@ -86,14 +77,18 @@ namespace Mechanics.GameLevel.Stages.ElectroStageParts
 
         private List<TapePlace> RayCastTape()
         {
-            List<RaycastResult> resultsRay = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(new PointerEventData(EventSystem.current), resultsRay);
-            Debug.Log("Поиск прдметов подомной - " + resultsRay.Count);
-            List<TapePlace> result = new List<TapePlace>();
+            var result = new List<TapePlace>();
+            var resultsRay = Physics2D.OverlapCircleAll(transform.position, _overlapRaduis);
             foreach (var ray in resultsRay)
                 if (ray.gameObject.TryGetComponent<TapePlace>(out var place))
                     result.Add(place);
             return result;
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireSphere(transform.position, _overlapRaduis);
         }
     }
 }

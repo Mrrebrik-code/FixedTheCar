@@ -12,7 +12,6 @@ namespace Mechanics.GameLevel.Stages.ElectroStageParts
         private void Awake()
         {
             _tapePlace = GetComponentsInChildren<TapePlace>();
-            Debug.Log(_tapePlace.Length);
             foreach (var place in _tapePlace) place.Fixed += OnFixed;
         }
 

@@ -17,6 +17,7 @@ namespace Infrastructure.LevelState.SceneScripts.Game
 
         [SerializeField] private Player _playerTemplate;
         [SerializeField] private Button _nextLevelButton;
+        [SerializeField] private Transform _parentForStage;
         
         [DI] private Curtain _curtain;
         [DI] private ConfigLevel _configLevel;
@@ -72,6 +73,7 @@ namespace Infrastructure.LevelState.SceneScripts.Game
                 var stage = _diBox.CreatePrefab(stageData.StageTemplate);
                 stage.Init(stageData);
                 stage.transform.position = result.Count == 0 ? Vector3.zero : GetPositionStage(result[result.Count - 1], stage);
+                stage.transform.SetParent(_parentForStage);
                 result.Add(stage);
             }
 

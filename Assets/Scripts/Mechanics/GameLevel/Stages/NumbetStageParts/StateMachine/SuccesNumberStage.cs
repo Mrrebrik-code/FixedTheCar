@@ -19,7 +19,6 @@ namespace Mechanics.GameLevel.Stages.NumbetStageParts.StateMachine
         
         public override void On()
         {
-            Debug.Log("On succes");
             _factoryPrompter.ChangeAndSayNoneAnimated(FactoryPrompter.Type.Idea, _configLocalization.PraiseNumber);
             _engine.NewStage += OnNewStage;
             _engine.Completed += OnComleted;

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 namespace Mechanics.GameLevel.Stages.ElectroStageParts
 {
+    [RequireComponent(typeof(Collider2D))]
     public class TapePlace : MonoBehaviour
     {
         public event Action Fixed;

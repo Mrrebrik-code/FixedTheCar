@@ -23,10 +23,7 @@ namespace Mechanics.GameLevel.Stages.ElectroStageParts.Machines.State
                 EnterToState();
         }
 
-        public override void Off()
-        {
-            _stateToChange = null;
-        }
+        public override void Off() => _stateToChange = null;
 
         public override Stages.State TransitToOrNull() => _stateToChange;
 
