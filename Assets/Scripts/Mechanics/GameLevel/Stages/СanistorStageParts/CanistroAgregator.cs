@@ -41,7 +41,7 @@ namespace Mechanics.GameLevel.Stages.СanistorStageParts
 
         private void OnDestroy()
         {
-            _canistros.ForEach(x =>
+            _canistros?.ForEach(x =>
             {
                 x.StartCaistroAction -= StartActionCanistro;
                 x.FinishCanistroAction -= FinishActionCanistro;

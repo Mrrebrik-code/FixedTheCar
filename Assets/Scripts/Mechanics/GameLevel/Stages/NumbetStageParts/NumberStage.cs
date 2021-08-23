@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Factories;
 using Mechanics.GameLevel.Datas;
@@ -27,6 +28,7 @@ namespace Mechanics.GameLevel.Stages.NumbetStageParts
         
         private NumberDataStage _data;
         private NumberDataStage.MathPattern _currentMathExpamle;
+        private List<NumberDataStage.MathPattern> _prevPatterns = new List<NumberDataStage.MathPattern>();
 
         public override void Init(StageData stageData)
         {
@@ -59,15 +61,29 @@ namespace Mechanics.GameLevel.Stages.NumbetStageParts
             Completed?.Invoke();
         }
 
-        private void OnNewStage() => CreateBox();
+        private void OnNewStage()
+        {
+            _prevPatterns= new List<NumberDataStage.MathPattern>();
+            CreateBox();
+        }
 
         private void CreateBox() 
             => _clickHandler.Init(_boxGenerator.GenerateBox(_data, _currentMathExpamle = _data.RandomPattern), _currentMathExpamle, _engine);
 
         private void ChangePatternWithOdinaryResult()
         {
-            var listPattern = _data.Patterns.Where(x => x.FinalValue == _currentMathExpamle.FinalValue).ToList();
-            _currentMathExpamle = listPattern[Random.Range(0, listPattern.Count)];
+            _prevPatterns.Add(_currentMathExpamle);
+            var listPattern = _data.Patterns.Where(x => x.FinalValue == _currentMathExpamle.FinalValue).Except(_prevPatterns).ToList();
+            if (listPattern.Count > 0)
+            {
+                _currentMathExpamle = listPattern[Random.Range(0, listPattern.Count)];
+            }
+            else
+            {
+                _prevPatterns = new List<NumberDataStage.MathPattern>();
+                listPattern = _data.Patterns.Where(x => x.FinalValue == _currentMathExpamle.FinalValue).ToList();
+                _currentMathExpamle = listPattern[Random.Range(0, listPattern.Count)];
+            }
         }
     }
 }
