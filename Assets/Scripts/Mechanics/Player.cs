@@ -9,14 +9,20 @@ namespace Mechanics
     {
         [SerializeField] private Animator _animator;
         
-        public void MoveToPoint(Transform point, float duration, Action callback= null) => transform.DOMove(point.position, duration).OnComplete(() => callback?.Invoke());
+        private static readonly int IsDirty = Animator.StringToHash("IsDirty");
+        private static readonly int IsMove = Animator.StringToHash("IsMove");
 
-        public void MakeDirty()
+        public void MoveToPoint(Transform point, float duration, Action callback= null)
         {
+            transform.DOMove(point.position, duration).OnStart(()=>_animator.SetBool(IsMove, true)).OnComplete(() =>
+            {
+                _animator.SetBool(IsMove, false);
+                callback?.Invoke();
+            });
         }
 
-        public void MakeClear()
-        {
-        }
+        public void MakeDirty() => _animator.SetBool(IsDirty, true);
+
+        public void MakeClear() => _animator.SetBool(IsDirty, false);
     }
 }
