@@ -28,6 +28,7 @@ namespace Infrastructure.Configs
         [TextArea(1, 4)] public string FinishElectroStage;
         [Header("Canistro Stage")] 
         [TextArea(1, 4)] public string HelloCanistorStage;
+        [TextArea(1, 4)] public string HelloCanistorStage2;
         [TextArea(1, 4)] public string ChooseAnyCanisters;
         [TextArea(1, 4)] public string СorrectlyChooseCanistro;
         [TextArea(1, 4)] public string FailChooseCanistro;

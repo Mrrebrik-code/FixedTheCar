@@ -13,12 +13,23 @@ namespace Mechanics.GameLevel.Stages.СanistorStageParts.States
         public override void On()
         {
             FactoryPrompter.ChangeAt(FactoryPrompter.Type.Hello);
-            FactoryPrompter.Current.Unhide(()=>FactoryPrompter.Current.Say(ConfigLocalization.HelloCanistorStage, ()=>InputPlayer.AnyInput+=OnAnyKey));
+            FactoryPrompter.Current.Hide(
+                ()=>FactoryPrompter.Current.Unhide(
+                    ()=>FactoryPrompter.Current.Say(ConfigLocalization.HelloCanistorStage, 
+                        ()=>InputPlayer.AnyInput+=OnAnyKey)));
+            
         }
 
         private void OnAnyKey()
         {
             InputPlayer.AnyInput -= OnAnyKey;
+            FactoryPrompter.Current.Say(ConfigLocalization.HelloCanistorStage2, 
+                () => InputPlayer.AnyInput += OnAnyKey2);
+        }
+
+        private void OnAnyKey2()
+        {
+            InputPlayer.AnyInput -= OnAnyKey2;
             _isTransit = true;
         }
 
