@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02f525be426e45079a80749c2d8f06b1, type: 3}
-  m_Name: Level 1
+  m_Name: Level 4
   m_EditorClassIdentifier: 
-  Difficulty: 1
-  Stiker: {fileID: 21300000, guid: 97f33d2d69f5ddc4dac5fe7ab76a3e3f, type: 3}
-  CarTemplate: {fileID: 2382000099197176238, guid: 92e00e93611fcf741a3ab003c79c628d, type: 3}
+  Difficulty: 3
+  Stiker: {fileID: 21300000, guid: 804847f40a89d1e40842b510bb7f1409, type: 3}
+  CarTemplate: {fileID: 6470276905514396272, guid: d514625a4c11dd2428fe42bc54d7f782, type: 3}
   StagesLevel:
   - {fileID: 11400000, guid: 14cac22a24e544e41bb5a6d421467840, type: 2}
   - {fileID: 11400000, guid: f7e760859b3db6c448bcbc4a113d3456, type: 2}
+  - {fileID: 11400000, guid: f7e760859b3db6c448bcbc4a113d3456, type: 2}
   - {fileID: 11400000, guid: 5de62eb059051594ba73c133f0f1d622, type: 2}
+  - {fileID: 11400000, guid: 14cac22a24e544e41bb5a6d421467840, type: 2}

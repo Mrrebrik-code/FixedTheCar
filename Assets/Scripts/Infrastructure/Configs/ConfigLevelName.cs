@@ -8,5 +8,6 @@ namespace Infrastructure.Configs
         public string MainMnu;
         public string Garage;
         public string GameLevel;
+        public string SketchBook;
     }
 }

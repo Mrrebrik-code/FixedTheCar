@@ -15,6 +15,7 @@ namespace Infrastructure.LevelState.SceneScripts.Garages
     {
         [SerializeField] private Button _buttonNextLevel;
         [SerializeField] private Button _exitFromGarageButton;
+        [SerializeField] private Button _buttonToSketchBook;
         [SerializeField] private GarageCurtain _garageCurtain;
         
         [DI] private SelectorCar _selectorCar;
@@ -27,7 +28,11 @@ namespace Infrastructure.LevelState.SceneScripts.Garages
             _selectorCar.NewCarSelect += OnNewCarSelect;
             _buttonNextLevel.onClick.AddListener(StartGame);
             _exitFromGarageButton.onClick.AddListener(OnExitGarage);
+            _buttonToSketchBook.onClick.AddListener(EnterToScketchBook);
         }
+
+        private void EnterToScketchBook() => 
+            _curtain.Fade(()=>_levelStateMachine.Enter<SketchbookScene, ConfigLevel>(null), 0.15f);
 
         private void OnExitGarage()
         {
@@ -45,6 +50,7 @@ namespace Infrastructure.LevelState.SceneScripts.Garages
 
         private void TurnOffAllButton()
         {
+            _buttonToSketchBook.interactable = false;
             _buttonNextLevel.interactable = false;
             _exitFromGarageButton.interactable = false;
         }

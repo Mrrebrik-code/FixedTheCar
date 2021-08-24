@@ -10,6 +10,7 @@ namespace Infrastructure.Configs
     public class ConfigLevel : ScriptableObject
     {
         [Range(1,3)]public int Difficulty = 1;
+        public Sprite Stiker;
         public Car CarTemplate;
         public List<StageData> StagesLevel = new List<StageData>(); 
     }

@@ -12,6 +12,7 @@ namespace Infrastructure.Configs
         [TextArea(1, 4)] public string Wellcome;
         [TextArea(1, 4)] public string FirstFixCar;
         [TextArea(1, 4)] public string HowToStartGame;
+        [TextArea(1, 4)] public string SketchBookHello;
         [Header("Number Stage")]
         [TextArea(1, 4)] public string HelloNumberStage;
         [TextArea(1, 4)] public string HelloNumberStage2;

@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game Level.unity
     guid: 4d8ae3bc9c2e8924fbdbce46a7f94298
+  - enabled: 1
+    path: Assets/Scenes/SketchBook.unity
+    guid: 34c1417321dc5f84bb5745420e5aa095
   m_configObjects: {}

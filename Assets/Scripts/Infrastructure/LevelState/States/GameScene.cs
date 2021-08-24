@@ -12,9 +12,9 @@ namespace Infrastructure.LevelState.States
         
         private DiBox _diBox = DiBox.MainBox;
         
-        public void Enter(ConfigLevel payLoaded)
+        public void Enter(ConfigLevel finishedLevel)
         {
-            _diBox.RegisterSingle(payLoaded);
+            _diBox.RegisterSingle(finishedLevel);
             _sceneLoader.Load(_levelName.GameLevel);
         }
 
