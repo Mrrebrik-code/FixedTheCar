@@ -135,6 +135,8 @@ MonoBehaviour:
   _collider: {fileID: 5258074418350692971}
   _rigidbody2D: {fileID: 8265130801845119842}
   _speed: 6
+  _player: {fileID: 2595198447318272089}
+  _spriteRenderer: {fileID: 7097004384762651586}
 --- !u!61 &5258074418350692971
 BoxCollider2D:
   m_ObjectHideFlags: 0

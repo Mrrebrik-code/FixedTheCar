@@ -22,6 +22,8 @@ namespace Mechanics
             });
         }
 
+        public void SetMoveAnimationActive(bool isActive) => _animator.SetBool(IsMove, isActive);
+
         public void MakeDirty() => _animator.SetBool(IsDirty, true);
 
         public void MakeClear() => _animator.SetBool(IsDirty, false);
