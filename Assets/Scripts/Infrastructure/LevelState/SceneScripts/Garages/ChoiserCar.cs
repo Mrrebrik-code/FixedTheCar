@@ -1,4 +1,5 @@
-﻿using Factories;
+﻿using System.Collections.Generic;
+using Factories;
 using Infrastructure.Configs;
 using Mechanics.Garage;
 using Plugins.DIContainer;
@@ -16,7 +17,7 @@ namespace Infrastructure.LevelState.SceneScripts.Garages
 
         private void Awake() => _initGarage.Inited += OnInited;
 
-        private void OnInited()
+        private void OnInited(List<Garage> garages)
         {
             _initGarage.Inited -= OnInited;
             _selectorCar.On();

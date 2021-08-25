@@ -12,7 +12,7 @@ namespace Infrastructure.LevelState.SceneScripts.Garages
 {
     public class InitGarage : MonoBehaviour
     {
-        public event Action Inited;
+        public event Action<List<Garage>> Inited;
         
         [SerializeField] private FactoryPrompter _factoryPrompter;
         
@@ -38,7 +38,7 @@ namespace Infrastructure.LevelState.SceneScripts.Garages
             var current = _factoryPrompter.Current;
             current.Unhide(
                 () => current.Say(_configLocalization.FirstFixCar,
-                    () => Inited?.Invoke()
+                    () => Inited?.Invoke(_garages)
                 )
             );
         }
@@ -46,7 +46,7 @@ namespace Infrastructure.LevelState.SceneScripts.Garages
         private void SetCamera()
         {
             _camera = Camera.main;
-            _camera.transform.position = new Vector3(_garages[0].transform.position.x, _garages[0].transform.position.y, -10);
+            _camera.transform.position = _garages[0].PointCamera.position;
         }
 
         private List<Garage> SpawnGatages(in List<ConfigLevel> levels, Garage template)
