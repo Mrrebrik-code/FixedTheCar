@@ -29,6 +29,7 @@ namespace Mechanics.SketchBook
             _pages = _factoryPage.CreatePage(this);
             _currentPageIndex = 0;
             _pages[_currentPageIndex].Show(0.0001f);
+            SetActiveButtonByIndex();
         }
 
         private void OnPrevPage()
@@ -53,7 +54,18 @@ namespace Mechanics.SketchBook
                     ChangeInteractableButtonTo(true)));
         }
 
-        private void ChangeInteractableButtonTo(bool isActive) => 
+        private void ChangeInteractableButtonTo(bool isActive)
+        {
             _nextPageButton.interactable = _prevPageButton.interactable = isActive;
+            SetActiveButtonByIndex();
+        }
+
+        private void SetActiveButtonByIndex()
+        {
+            if (_currentPageIndex == 0)
+                _prevPageButton.interactable = false;
+            if (_currentPageIndex == _pages.Count-1)
+                _nextPageButton.interactable = false;
+        }
     }
 }
