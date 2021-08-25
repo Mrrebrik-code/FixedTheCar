@@ -3,6 +3,7 @@
   <component name="ContentModelUserStore">
     <attachedFolders />
     <explicitIncludes>
+      <Path>Assets</Path>
       <Path>Library/PackageCache/com.unity.2d.animation@5.0.5</Path>
       <Path>Library/PackageCache/com.unity.2d.common@4.0.3</Path>
       <Path>Library/PackageCache/com.unity.2d.path@4.0.1</Path>
@@ -61,6 +62,7 @@
     <explicitExcludes>
       <Path>.git</Path>
       <Path>.idea</Path>
+      <Path>Library</Path>
       <Path>Logs</Path>
       <Path>Temp</Path>
       <Path>UserSettings</Path>

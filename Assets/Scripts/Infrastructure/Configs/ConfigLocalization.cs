@@ -34,5 +34,9 @@ namespace Infrastructure.Configs
         [TextArea(1, 4)] public string СorrectlyChooseCanistro;
         [TextArea(1, 4)] public string FailChooseCanistro;
         [TextArea(1, 4)] public string EndCanistrostage;
+        [Header("BossStage")]
+        [TextArea(1,4)]public string HelloBossStage;
+        [TextArea(1,4)]public string LoseBossStage;
+        [TextArea(1,4)]public string WinBossStage;
     }
 }

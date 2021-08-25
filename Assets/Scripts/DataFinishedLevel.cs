@@ -11,7 +11,7 @@ namespace DefaultNamespace
 
         public List<string> GetAllFinishedLevel()
         {
-            var stringResult = PlayerPrefs.GetString(IdSavedFinishedLevel, "[]");
+            var stringResult = PlayerPrefs.GetString(IdSavedFinishedLevel, JsonConvert.SerializeObject(new List<string>()));
             return JsonConvert.DeserializeObject<List<string>>(stringResult);
         }
         

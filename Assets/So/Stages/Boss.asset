@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d032539a03034fdbb99bc8f020212973, type: 3}
+  m_Name: Boss
+  m_EditorClassIdentifier: 
+  StageTemplate: {fileID: 2987534755606056249, guid: 3c221294130cc404bb08aff0fb832769, type: 3}
+  HelthPlayer: 3
+  TimeFlyHandBoss: 3
+  TimeRotateToTarget: 0.5
+  DelayBetweenFirstAndSecondAttack: 1
+  TimePauseAttackMin: 2
+  TimePauseAttackMax: 4

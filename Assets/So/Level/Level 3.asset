@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f525be426e45079a80749c2d8f06b1, type: 3}
   m_Name: Level 3
   m_EditorClassIdentifier: 
-  Difficulty: 1
+  Difficulty: 2
   Stiker: {fileID: 21300000, guid: 97f33d2d69f5ddc4dac5fe7ab76a3e3f, type: 3}
   CarTemplate: {fileID: 2382000099197176238, guid: 92e00e93611fcf741a3ab003c79c628d, type: 3}
   StagesLevel:
-  - {fileID: 11400000, guid: 14cac22a24e544e41bb5a6d421467840, type: 2}
-  - {fileID: 11400000, guid: f7e760859b3db6c448bcbc4a113d3456, type: 2}
   - {fileID: 11400000, guid: 5de62eb059051594ba73c133f0f1d622, type: 2}
+  - {fileID: 11400000, guid: 14cac22a24e544e41bb5a6d421467840, type: 2}

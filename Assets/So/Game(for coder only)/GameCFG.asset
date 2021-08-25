@@ -53,5 +53,5 @@ MonoBehaviour:
   ConfigLevels:
   - {fileID: 11400000, guid: d3a830fda745ab94bbc73117250ca268, type: 2}
   - {fileID: 11400000, guid: 802f0028fe1aa984cb901eecf7665362, type: 2}
-  - {fileID: 11400000, guid: 7b77a92cffd4fa646990fa8c74d9b7a7, type: 2}
-  - {fileID: 11400000, guid: 15254a3ef9d05d946b51ee6a732b58d2, type: 2}
+  - {fileID: 11400000, guid: 47fc2cf47fd75514d8eabb6f85fe6c0e, type: 2}
+  - {fileID: 11400000, guid: fefba33a322c4854cbad31f87ee3339e, type: 2}
