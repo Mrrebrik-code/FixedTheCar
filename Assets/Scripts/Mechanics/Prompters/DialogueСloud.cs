@@ -3,6 +3,7 @@ using System.Collections;
 using DG.Tweening;
 using Infrastructure.Configs;
 using Plugins.DIContainer;
+using Plugins.Interfaces;
 using TMPro;
 using UnityEngine;
 
@@ -28,6 +29,7 @@ namespace Mechanics.Prompters
                 StartTextUpdate(mes,callback);
         }
 
+        private void OnDisable() => Clear();
 
         public void Clear() => _label.text = string.Empty;
 
@@ -46,7 +48,8 @@ namespace Mechanics.Prompters
         private void StartTextUpdate(string mes, Action callback)
         {
             StopTextUpdate();
-            _textUpdate = StartCoroutine(MakeText(mes, _configGame.SpeedCurveTextPrompter.Evaluate(mes.Length), callback));
+            if (enabled)
+                _textUpdate = StartCoroutine(MakeText(mes, _configGame.SpeedCurveTextPrompter.Evaluate(mes.Length), callback));
         }
 
         private void StopTextUpdate()
