@@ -17,7 +17,7 @@ namespace Mechanics.SketchBook
         [DI] private ConfigLocalization _configLocalization;
         [DI] private IInput _input;
 
-        public const string IdActionOfPrometerInSketchBook = "PrometerHasTalked";
+        private const string IdActionOfPrometerInSketchBook = "PrometerHasTalked";
 
         private bool IsHasTalkedInSketchBook => PlayerPrefs.GetInt(IdActionOfPrometerInSketchBook, 0) == 1;
 
@@ -41,5 +41,7 @@ namespace Mechanics.SketchBook
             PlayerPrefs.SetInt(IdActionOfPrometerInSketchBook, 1);
             _factoryPrompter.Current.Hide(()=>_book.SetInteractable(true));
         }
+        
+        public static void ZeroMe() => PlayerPrefs.SetInt(IdActionOfPrometerInSketchBook,0);
     }
 }
