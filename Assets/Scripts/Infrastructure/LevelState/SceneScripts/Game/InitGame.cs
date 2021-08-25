@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using DefaultNamespace;
 using Infrastructure.Configs;
+using Infrastructure.LevelState.States;
 using Mechanics;
 using Mechanics.GameLevel.Stages;
 using Mechanics.Interfaces;
 using Plugins.DIContainer;
+using Plugins.GameStateMachines;
 using Plugins.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,9 +21,11 @@ namespace Infrastructure.LevelState.SceneScripts.Game
         [SerializeField] private Player _playerTemplate;
         [SerializeField] private Button _nextLevelButton;
         [SerializeField] private Transform _parentForStage;
-        
+
+        [DI] private LevelStateMachine _levelStateMachine;
         [DI] private Curtain _curtain;
         [DI] private ConfigLevel _configLevel;
+        [DI] private DataFinishedLevel _dataFinishedLevel;
 
         private DiBox _diBox = DiBox.MainBox;
         private List<Stage> _stages;
@@ -56,7 +61,8 @@ namespace Infrastructure.LevelState.SceneScripts.Game
             }
             else
             {
-                Debug.Log("Level is and");
+                _dataFinishedLevel.Add(_configLevel);
+                _curtain.Fade(()=>_levelStateMachine.Enter<SketchbookScene, ConfigLevel>(_configLevel)); 
             }
             _nextLevelButton.gameObject.SetActive(false);
         }

@@ -15,11 +15,11 @@ namespace Infrastructure.LevelState.States
         [DI] private ConfigLevelName _configLevelName;
         [DI] private Curtain _curtain;
         
-        public void Enter(ConfigLevel finishedLevel)
+        public void Enter(ConfigLevel levelConfig)
         {
             _diBox.RegisterSingle(new DataFinishedLevel());
-            if(finishedLevel)
-                _diBox.RegisterSingle(finishedLevel);
+            if(levelConfig)
+                _diBox.RegisterSingle(levelConfig);
             _sceneLoader.Load(_configLevelName.SketchBook, ()=>_curtain.Unfade());
         }
 

@@ -14,6 +14,7 @@ namespace Mechanics.SketchBook
         [SerializeField] private FactoryPage _factoryPage;
         [SerializeField] private float _durationChange = 0.25f;
         [SerializeField] private Transform _parentForPage;
+        [SerializeField] private CanvasGroup _canvasGroup;
         
         private List<Page> _pages;
         private int _currentPageIndex = 0;
@@ -23,7 +24,7 @@ namespace Mechanics.SketchBook
             _nextPageButton.onClick.AddListener(OnNextPage);
             _prevPageButton.onClick.AddListener(OnPrevPage);
         }
-
+        
         private void Start()
         {
             _pages = _factoryPage.CreatePage(this);
@@ -31,6 +32,8 @@ namespace Mechanics.SketchBook
             _pages[_currentPageIndex].Show(0.0001f);
             SetActiveButtonByIndex();
         }
+
+        public void SetInteractable(bool isActive) => _canvasGroup.interactable = isActive;
 
         private void OnPrevPage()
         {

@@ -24,7 +24,7 @@ namespace DefaultNamespace
         public void Add(ConfigLevel level)
         {
             var listName = GetAllFinishedLevel();
-            if(listName.Contains(level.name))
+            if(!listName.Contains(level.name))
                 listName.Add(level.name);
             PlayerPrefs.SetString(IdSavedFinishedLevel, JsonConvert.SerializeObject(listName));            
         }

@@ -23,7 +23,6 @@ namespace Mechanics.SketchBook
             {
                 if(i>=levels.Count)
                     break;
-                Debug.Log("Used config " + levels[i].name + " Stiker - "+levels[i].Stiker.name);
                 _stickers[i].Init(levels[i]);
                 usedConfigs.Add(levels[i]);
             }

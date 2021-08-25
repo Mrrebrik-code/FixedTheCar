@@ -1,4 +1,5 @@
-﻿using Plugins.DIContainer;
+﻿using System;
+using Plugins.DIContainer;
 using Services.Interfaces;
 using UnityEngine;
 
@@ -14,14 +15,18 @@ namespace Mechanics
 
         [DI]
         private void Init() => enabled = false;
-        
+
+        private void Awake() => Off();
+
         private void OnEnable()
         {
             _input.NormalizeHorizontalMove += OnHorizontalMove;
             _rigidbody2D.simulated = _collider.enabled = true;
         }
 
-        private void OnDisable()
+        private void OnDisable() => Off();
+
+        private void Off()
         {
             _input.NormalizeHorizontalMove -= OnHorizontalMove;
             _rigidbody2D.simulated = _collider.enabled = false;

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level 1
   m_EditorClassIdentifier: 
   Difficulty: 1
-  Stiker: {fileID: 21300000, guid: 97f33d2d69f5ddc4dac5fe7ab76a3e3f, type: 3}
+  Stiker: {fileID: 21300000, guid: 1d7a823d5fc83704e94724e238ddd34c, type: 3}
   CarTemplate: {fileID: 2382000099197176238, guid: 92e00e93611fcf741a3ab003c79c628d, type: 3}
   StagesLevel:
   - {fileID: 11400000, guid: 14cac22a24e544e41bb5a6d421467840, type: 2}

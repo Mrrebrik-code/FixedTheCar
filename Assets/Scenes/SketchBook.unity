@@ -201,6 +201,7 @@ GameObject:
   - component: {fileID: 378147777}
   - component: {fileID: 378147776}
   - component: {fileID: 378147778}
+  - component: {fileID: 378147779}
   m_Layer: 5
   m_Name: Book
   m_TagString: Untagged
@@ -285,6 +286,19 @@ MonoBehaviour:
   _factoryPage: {fileID: 1262584442}
   _durationChange: 0.25
   _parentForPage: {fileID: 1678225231}
+  _canvasGroup: {fileID: 378147779}
+--- !u!225 &378147779
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378147774}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &455731352
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,6 +495,7 @@ GameObject:
   - component: {fileID: 1262584443}
   - component: {fileID: 1262584442}
   - component: {fileID: 1262584444}
+  - component: {fileID: 1262584445}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -528,6 +543,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _exitButton: {fileID: 2102153177}
+--- !u!114 &1262584445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262584441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e977127f6934b8990afb54d4db58fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _book: {fileID: 378147778}
+  _factoryPrompter: {fileID: 1369674070}
 --- !u!1 &1369674069
 GameObject:
   m_ObjectHideFlags: 0

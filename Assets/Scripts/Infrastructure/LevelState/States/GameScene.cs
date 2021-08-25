@@ -1,4 +1,5 @@
-﻿using Infrastructure.Configs;
+﻿using DefaultNamespace;
+using Infrastructure.Configs;
 using Plugins.DIContainer;
 using Plugins.GameStateMachines.Interfaces;
 using Plugins.Interfaces;
@@ -12,14 +13,16 @@ namespace Infrastructure.LevelState.States
         
         private DiBox _diBox = DiBox.MainBox;
         
-        public void Enter(ConfigLevel finishedLevel)
+        public void Enter(ConfigLevel levelConfig)
         {
-            _diBox.RegisterSingle(finishedLevel);
+            _diBox.RegisterSingle(levelConfig);
+            _diBox.RegisterSingle(new DataFinishedLevel());
             _sceneLoader.Load(_levelName.GameLevel);
         }
 
         public void Exit()
         {
+            _diBox.RemoveSingel<DataFinishedLevel>();
             _diBox.RemoveSingel<ConfigLevel>();
         }
     }

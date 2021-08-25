@@ -2,6 +2,6 @@
 {
     public interface IPayLoadedState<TPay> : IExitableState
     {
-        void Enter(TPay finishedLevel);
+        void Enter(TPay levelConfig);
     }
 }
