@@ -7,14 +7,21 @@ using UnityEngine;
 
 namespace Mechanics.SketchBook
 {
-    [RequireComponent(typeof(CanvasGroup))]
+    [RequireComponent(typeof(CanvasGroup), typeof(RectTransform))]
     public class Page : MonoBehaviour
     {
+        public RectTransform RectTransform => _rectTransform;
+
         [SerializeField] private List<Sticker> _stickers;
 
         private CanvasGroup _canvasGroup;
+        private RectTransform _rectTransform;
         
-        private void Awake() => _canvasGroup = GetComponent<CanvasGroup>();
+        private void Awake()
+        {
+            _canvasGroup = GetComponent<CanvasGroup>();
+            _rectTransform = GetComponent<RectTransform>();
+        }
 
         public void Init(in List<ConfigLevel> levels, out List<ConfigLevel> usedConfigs)
         {

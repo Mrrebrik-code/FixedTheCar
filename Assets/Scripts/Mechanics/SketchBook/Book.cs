@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using DG.Tweening;
+using Mechanics.GameLevel.Stages.ElectroStageParts.Machines;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,9 +14,10 @@ namespace Mechanics.SketchBook
         [SerializeField] private Button _nextPageButton;
         [SerializeField] private Button _prevPageButton;
         [SerializeField] private FactoryPage _factoryPage;
-        [SerializeField] private float _durationChange = 0.25f;
         [SerializeField] private Transform _parentForPage;
         [SerializeField] private CanvasGroup _canvasGroup;
+        [SerializeField] private float _durationMove;
+        [SerializeField] private float _durationFade;
         
         private List<Page> _pages;
         private int _currentPageIndex = 0;
@@ -38,24 +41,62 @@ namespace Mechanics.SketchBook
         private void OnPrevPage()
         {
             if (_currentPageIndex - 1 < 0) return;
-            ChangePage(_currentPageIndex - 1);
+            ChangePage(_currentPageIndex - 1, TypeSwipe.ToRight);
             _currentPageIndex--;
         }
 
         private void OnNextPage()
         {
             if (_currentPageIndex + 1 >= _pages.Count) return;
-            ChangePage(_currentPageIndex+1);
+            ChangePage(_currentPageIndex+1, TypeSwipe.ToLeft);
             _currentPageIndex++;
         }
 
-        private void ChangePage(int newPage)
+        private void ChangePage(int newPage, TypeSwipe type)
         {
             ChangeInteractableButtonTo(false);
-            _pages[_currentPageIndex].Hide(_durationChange, ()=>
-                _pages[newPage].Show(_durationChange,()=>
-                    ChangeInteractableButtonTo(true)));
+            if (type == TypeSwipe.ToLeft)
+            {
+                MovePage(
+                    _pages[_currentPageIndex], 
+                    CenterPoint(), 
+                    LeftPoint(), 
+                    () => _pages[_currentPageIndex].Hide(_durationFade));
+                MovePage(
+                    _pages[newPage], 
+                    RightPoint(), 
+                    CenterPoint(), 
+                    () => _pages[newPage].Show(_durationFade), 
+                    () => ChangeInteractableButtonTo(true));
+            }
+            else
+            {
+                MovePage(
+                    _pages[_currentPageIndex], 
+                    CenterPoint(), 
+                    RightPoint(), 
+                    () => _pages[_currentPageIndex].Hide(_durationFade));
+                MovePage(
+                    _pages[newPage], 
+                    LeftPoint(), 
+                    CenterPoint(), 
+                    () => _pages[newPage].Show(_durationFade), 
+                    () => ChangeInteractableButtonTo(true));
+            }
         }
+
+        private void MovePage(Page page, Vector2 startPoint, Vector2 endPoint, Action actionOnProcess, Action callback = null)
+        {
+            page.RectTransform.anchoredPosition = startPoint;
+            actionOnProcess?.Invoke();
+            page.RectTransform.DOAnchorPos(endPoint, _durationMove).OnComplete(()=>callback?.Invoke());
+        }
+        
+        private Vector2 RightPoint() => new Vector2((float) (Screen.width*1.5),0);
+
+        private Vector2 LeftPoint() => new Vector2((float) (Screen.width*-1.5), 0);
+
+        private Vector2 CenterPoint() => new Vector2(0, 0);
 
         private void ChangeInteractableButtonTo(bool isActive)
         {
@@ -69,6 +110,11 @@ namespace Mechanics.SketchBook
                 _prevPageButton.interactable = false;
             if (_currentPageIndex == _pages.Count-1)
                 _nextPageButton.interactable = false;
+        }
+        
+        private enum TypeSwipe
+        {
+            ToLeft, ToRight
         }
     }
 }

@@ -284,9 +284,10 @@ MonoBehaviour:
   _nextPageButton: {fileID: 1931104257}
   _prevPageButton: {fileID: 2126104879}
   _factoryPage: {fileID: 1262584442}
-  _durationChange: 0.25
   _parentForPage: {fileID: 1678225231}
   _canvasGroup: {fileID: 378147779}
+  _durationMove: 1
+  _durationFade: 0.5
 --- !u!225 &378147779
 CanvasGroup:
   m_ObjectHideFlags: 0
