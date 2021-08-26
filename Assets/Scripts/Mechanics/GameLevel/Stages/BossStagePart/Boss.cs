@@ -2,10 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Mechanics.GameLevel.Stages.BossStagePart.Interfaces;
-using Plugins.DIContainer;
-using Plugins.Sound;
-using TMPro;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

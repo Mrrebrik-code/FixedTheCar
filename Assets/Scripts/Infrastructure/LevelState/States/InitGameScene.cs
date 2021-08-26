@@ -46,8 +46,11 @@ namespace Infrastructure.LevelState.States
                 input = new KeyboardInput();
                 _diBox.RegisterSingle<IInput>(input);
             }
-            else
+			else
+			{
                 throw new Exception("No input for this platform :(");
+            }
+                
 
             _coroutineRunner.StartCoroutine(UpdateIInput(input));
         }

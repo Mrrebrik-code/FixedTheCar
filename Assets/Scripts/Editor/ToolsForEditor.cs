@@ -1,6 +1,5 @@
 ﻿using Mechanics.SketchBook;
 using UnityEditor;
-using UnityEngine;
 
 namespace DefaultNamespace
 {

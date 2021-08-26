@@ -96,6 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a6f926f2b34ee587fbf0190d8df561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultResolution: {x: 1024, y: 768}
+  DefaultResolution: {x: 1920, y: 1080}
   WidthOrHeight: 0.5
   _isDebug: 0
