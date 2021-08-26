@@ -1,5 +1,7 @@
 ﻿using Mechanics.GameLevel.Stages.BossStagePart.Interfaces;
 using Plugins.DIContainer;
+using Services.IInputs;
+using Services.Interfaces;
 using UnityEngine;
 
 namespace Mechanics.GameLevel.Stages.BossStagePart.StateMachine.State
@@ -16,6 +18,8 @@ namespace Mechanics.GameLevel.Stages.BossStagePart.StateMachine.State
         private StageBossState _stateToTransit;
         private PlayerHelth _playerHealth;
 
+        [DI] private IInput _input;
+
         [DI]
         private void Init() => _bossStage.PlayerWasGet += OnPlayerGet;
 
@@ -26,6 +30,7 @@ namespace Mechanics.GameLevel.Stages.BossStagePart.StateMachine.State
             _agregatorPointerReciver.OnAll();
             _player.ChangeActiveMover(true);
             _boss.Finished += OnFinished;
+            (_input as IShowHide)?.Show();
         }
 
         private void OnHealthUpdate(int obj)
@@ -42,6 +47,7 @@ namespace Mechanics.GameLevel.Stages.BossStagePart.StateMachine.State
             if(_playerHealth)
                 _playerHealth.HealthUpdate += OnHealthUpdate;
             _stateToTransit = null;
+            (_input as IShowHide)?.Hide();
         }
 
         public override Stages.State TransitToOrNull() => _stateToTransit;

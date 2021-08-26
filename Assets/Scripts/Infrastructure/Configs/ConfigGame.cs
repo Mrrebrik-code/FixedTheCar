@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using Factories;
 using Mechanics.Garage;
 using Mechanics.Prompters;
+using Services.IInputs;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Infrastructure.Configs
 {
@@ -17,7 +19,8 @@ namespace Infrastructure.Configs
         public AnimationCurve SpeedCurveTextPrompter;
         public List<PrompterType> TemplatePrompter;
         public List<ConfigLevel> ConfigLevels;
-        
+        public CanvasUiInput CanvasUI;
+
 
         [Serializable]
         public class PrompterType

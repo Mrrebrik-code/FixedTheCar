@@ -9,6 +9,7 @@ using Plugins.Sound;
 using Services.IInputs;
 using Services.Interfaces;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Infrastructure.LevelState.States
 {
@@ -42,17 +43,18 @@ namespace Infrastructure.LevelState.States
         {
             IInput input = null;
             if (Application.isEditor || !Application.isMobilePlatform)
-            {
                 input = new KeyboardInput();
-                _diBox.RegisterSingle<IInput>(input);
-            }
-			else
-			{
-                throw new Exception("No input for this platform :(");
-            }
-                
+            else
+                input = CreateMobileInput();
+            _diBox.RegisterSingle<IInput>(input);
+            _coroutineRunner.StartCoroutine(UpdateIInput(input));    
+        }
 
-            _coroutineRunner.StartCoroutine(UpdateIInput(input));
+        private IInput CreateMobileInput()
+        {
+            var canvasUI =  Object.Instantiate(_configGame.CanvasUI);
+            Object.DontDestroyOnLoad(canvasUI);
+            return new MobileInput(canvasUI);
         }
 
         private IEnumerator UpdateIInput(IInput input)
