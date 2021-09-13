@@ -45,19 +45,19 @@ namespace Services.IInputs
 			NormalizeHorizontalMove?.Invoke(_xDiraction);
 		}
 
-		private void LeftDown() => _xDiraction = -1;
+		private void RightUp()
+		{
+			if (_xDiraction == 1) _xDiraction = 0;
+		}
+
+		private void RightDown() => _xDiraction = 1;
 
 		private void LeftUp()
 		{
 			if (_xDiraction == -1) _xDiraction = 0;
 		}
 
-		private void RightUp() => _xDiraction = 1;
-
-		private void RightDown()
-		{
-			if (_xDiraction == 1) _xDiraction = 0;
-		}
+		private void LeftDown() => _xDiraction = -1;
 
 		public void Show() => _canvasInput.Show();
 
