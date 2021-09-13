@@ -1,6 +1,7 @@
 ﻿using System;
 using Mechanics.GameLevel.Stages.BossStagePart.Interfaces;
 using Mechanics.GameLevel.Stages.BossStagePart.StateMachine;
+using Mechanics.Interfaces;
 using Mechanics.TransitPlayer;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ namespace Mechanics.GameLevel.Stages.BossStagePart
         [SerializeField] private SizeElement _size;
         [SerializeField] private Transform _pointCamera;
         [SerializeField] private Transform _pointPlayer;
-        [SerializeField] private TeleportPlayerTransit _playerTransit;
+        [SerializeField] private AbsTransitPlayer _playerTransit;
         [SerializeField] private BossStageStateMachine _stateMachine;
         [SerializeField] private Boss _boss;
         [SerializeField] private PlayerHelth _playerHelth;

@@ -93,6 +93,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mathPatternState: {fileID: 582959783263698951}
   _engine: {fileID: 8177029689366366025}
+  _delayFirst: {fileID: 11400000, guid: e659551c04686da418b3ed560fbfb970, type: 2}
+  _delaySecond: {fileID: 11400000, guid: e659551c04686da418b3ed560fbfb970, type: 2}
 --- !u!114 &582959783263698951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,7 +535,7 @@ GameObject:
   - component: {fileID: 8177029689366366025}
   - component: {fileID: 4059722883548844063}
   - component: {fileID: 3887203435759538925}
-  - component: {fileID: 1283684326888703821}
+  - component: {fileID: 4594869872945951297}
   m_Layer: 0
   m_Name: NumberStageStage
   m_TagString: Untagged
@@ -577,7 +579,7 @@ MonoBehaviour:
   _boxGenerator: {fileID: 4059722883548844063}
   _clickHandler: {fileID: 3887203435759538925}
   _numberStageStateMachine: {fileID: 5081335199680678032}
-  _absTransitPlayer: {fileID: 1283684326888703821}
+  _absTransitPlayer: {fileID: 4594869872945951297}
   _pointCamera: {fileID: 8399070453412764656}
   _poinPlayer: {fileID: 7457111248933684297}
 --- !u!114 &8177029689366366030
@@ -645,7 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08cd468a96f44207ae3bb86d89bd6091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1283684326888703821
+--- !u!114 &4594869872945951297
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -654,11 +656,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8177029689366366029}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbc1c3f8dbc24ecfa08108855c28b17f, type: 3}
+  m_Script: {fileID: 11500000, guid: 49081df2811a45129b210ba79181a38d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _point: {fileID: 7457111248933684297}
-  _duration: 2
+  _playerPoint: {fileID: 7457111248933684297}
+  _duration: 3
 --- !u!1 &8177029689374242491
 GameObject:
   m_ObjectHideFlags: 0

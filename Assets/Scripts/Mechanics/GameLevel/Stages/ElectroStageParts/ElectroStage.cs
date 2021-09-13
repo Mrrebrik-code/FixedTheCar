@@ -1,5 +1,6 @@
 ﻿using System;
 using Mechanics.GameLevel.Datas;
+using Mechanics.GameLevel.Stages.BossStagePart.Interfaces;
 using Mechanics.GameLevel.Stages.ElectroStageParts.Machines;
 using Mechanics.GameLevel.Stages.ElectroStageParts.Wire;
 using Mechanics.Interfaces;
@@ -25,6 +26,7 @@ namespace Mechanics.GameLevel.Stages.ElectroStageParts
 
         public override void StartStage(Player player, bool isInstantaneousTrnasit)
         {
+            foreach (var initPlayer in GetComponentsInChildren<IInitPlayer>()) initPlayer.Init(player);
             _wires.Break(Random.Range(_stageData.MinBreakWires, _stageData.MaxBreakeWires+1));
             if (isInstantaneousTrnasit) InstantaneousTransit(player);
             else NormalTransit(player);

@@ -9,14 +9,14 @@ namespace Mechanics.TransitPlayer
 {
     public class MovePlayerToPoint : AbsTransitPlayer
     {
-        [SerializeField] private Transform _point;
+        [SerializeField] private Transform _playerPoint;
         [SerializeField] private float _duration;
 
         [DI] private FactoryPrompter _factoryPrompter;
         
         private void Awake()
         {
-            if(!_point) Debug.LogError("Null point", this);
+            if(!_playerPoint) Debug.LogError("Null point", this);
         }
         
         public override void Transit(Player player,Vector3 pointCamera,  Action callback) 
@@ -24,7 +24,7 @@ namespace Mechanics.TransitPlayer
 
         private void Move(Player player, Vector3 pointCamera, Action callback)
         {
-            player.MoveToPoint(_point, _duration, callback);
+            player.MoveToPoint(_playerPoint, _duration, callback);
             Camera.main.transform.DOMove(pointCamera, _duration);
         }
     }

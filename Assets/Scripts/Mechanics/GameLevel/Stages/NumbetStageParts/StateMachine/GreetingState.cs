@@ -1,6 +1,8 @@
-﻿using Factories;
+﻿using System;
+using Factories;
 using Infrastructure.Configs;
 using Mechanics.Prompters;
+using Mechanics.Prompters.Interfaces;
 using Plugins.DIContainer;
 using Services.Interfaces;
 using UnityEngine;
@@ -11,6 +13,8 @@ namespace Mechanics.GameLevel.Stages.NumbetStageParts.StateMachine
     {
         [SerializeField] private MathPatternState _mathPatternState;
         [SerializeField] private Engine _engine;
+        [SerializeField] private AbsDelayPrometed _delayFirst;
+        [SerializeField] private AbsDelayPrometed _delaySecond;
         
         [DI] private IInput _input;
         [DI] private FactoryPrompter _factoryPrompter;
@@ -25,7 +29,7 @@ namespace Mechanics.GameLevel.Stages.NumbetStageParts.StateMachine
             CurrentPromter.Unhide(
                 ()=>CurrentPromter.Say(
                     _configLocalization.HelloNumberStage, 
-                    ()=>_input.AnyInput += OnFirstClick)
+                    ()=>_delayFirst.Activated(OnFirstClick))
                 );
         }
 
@@ -36,7 +40,7 @@ namespace Mechanics.GameLevel.Stages.NumbetStageParts.StateMachine
         private void OnFirstClick()
         {
             _input.AnyInput -= OnFirstClick;
-            CurrentPromter.Say(_configLocalization.HelloNumberStage2, ()=>_input.AnyInput += OnSecondClick);
+            CurrentPromter.Say(_configLocalization.HelloNumberStage2, ()=>_delaySecond.Activated(OnSecondClick));
         }
 
         private void OnSecondClick()

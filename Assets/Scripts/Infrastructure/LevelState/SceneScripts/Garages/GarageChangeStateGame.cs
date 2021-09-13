@@ -13,7 +13,6 @@ namespace Infrastructure.LevelState.SceneScripts.Garages
 {
     public class GarageChangeStateGame : MonoBehaviour
     {
-        [SerializeField] private Button _buttonNextLevel;
         [SerializeField] private Button _exitFromGarageButton;
         [SerializeField] private Button _buttonToSketchBook;
         [SerializeField] private GarageCurtain _garageCurtain;
@@ -24,9 +23,7 @@ namespace Infrastructure.LevelState.SceneScripts.Garages
 
         private void Awake()
         {
-            ChangeButtonIntractable(_selectorCar.SelectedCar);
             _selectorCar.NewCarSelect += OnNewCarSelect;
-            _buttonNextLevel.onClick.AddListener(StartGame);
             _exitFromGarageButton.onClick.AddListener(OnExitGarage);
             _buttonToSketchBook.onClick.AddListener(EnterToScketchBook);
         }
@@ -51,14 +48,12 @@ namespace Infrastructure.LevelState.SceneScripts.Garages
         private void TurnOffAllButton()
         {
             _buttonToSketchBook.interactable = false;
-            _buttonNextLevel.interactable = false;
             _exitFromGarageButton.interactable = false;
         }
 
         private void OnDestroy() => _selectorCar.NewCarSelect -= OnNewCarSelect;
 
-        private void OnNewCarSelect(Car obj) => ChangeButtonIntractable(obj);
+        private void OnNewCarSelect(Car obj) => StartGame();
 
-        private void ChangeButtonIntractable(Car obj) => _buttonNextLevel.interactable = obj != null;
     }
 }

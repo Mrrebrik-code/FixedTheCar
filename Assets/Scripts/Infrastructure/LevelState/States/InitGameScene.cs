@@ -42,7 +42,9 @@ namespace Infrastructure.LevelState.States
         private void CreateInput()
         {
             IInput input = null;
-            if (Application.isEditor || !Application.isMobilePlatform)
+            if (Application.isEditor && _configGame.IsDebugMode)
+                input = CreateDebugInput();
+            else if (Application.isMobilePlatform == false)
                 input = new KeyboardInput();
             else
                 input = CreateMobileInput();
@@ -50,11 +52,15 @@ namespace Infrastructure.LevelState.States
             _coroutineRunner.StartCoroutine(UpdateIInput(input));    
         }
 
-        private IInput CreateMobileInput()
+        private IInput CreateDebugInput() => new DebugInput(CreateCanvasUiInput());
+
+        private IInput CreateMobileInput() => new MobileInput(CreateCanvasUiInput());
+
+        private CanvasUiInput CreateCanvasUiInput()
         {
-            var canvasUI =  Object.Instantiate(_configGame.CanvasUI);
+            var canvasUI = Object.Instantiate(_configGame.CanvasUI);
             Object.DontDestroyOnLoad(canvasUI);
-            return new MobileInput(canvasUI);
+            return canvasUI;
         }
 
         private IEnumerator UpdateIInput(IInput input)

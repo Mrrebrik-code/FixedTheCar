@@ -1,5 +1,7 @@
-﻿using Factories;
+﻿using System;
+using Factories;
 using Infrastructure.Configs;
+using Mechanics.Prompters.Interfaces;
 using Plugins.DIContainer;
 using Services.Interfaces;
 using UnityEngine;
@@ -9,6 +11,7 @@ namespace Mechanics.GameLevel.Stages.BossStagePart.StateMachine.State
     public class GreetingBossState : StageBossState
     {
         [SerializeField] private FightWithBoss _fightWithBoss;
+        [SerializeField] private AbsDelayPrometed _delay;
         
         [DI] private FactoryPrompter _factoryPrompter;
         [DI] private ConfigLocalization _configLocalization;
@@ -20,7 +23,7 @@ namespace Mechanics.GameLevel.Stages.BossStagePart.StateMachine.State
             _factoryPrompter.ChangeAt(FactoryPrompter.Type.Hello);
             _factoryPrompter.Current.Unhide(
                 ()=>_factoryPrompter.Current.Say(_configLocalization.HelloBossStage, 
-                    ()=>_input.AnyInput+=OnAnyInput));
+                    ()=>_delay.Activated(OnAnyInput)));
         }
 
         private void OnAnyInput()

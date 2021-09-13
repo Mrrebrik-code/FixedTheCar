@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ac5372bcba84d7b9a7989691f47d81e, type: 3}
   m_Name: GameCFG
   m_EditorClassIdentifier: 
+  IsDebugMode: 1
   TemplateGarage: {fileID: 6063992734540445619, guid: 98ed148e1857d82469b3c7797d947398, type: 3}
   startSizePoolSource: 15
   TemplateSource: {fileID: 2158239556063573478, guid: ce433c11672d83a47b4b06ba3d5bb2bd, type: 3}

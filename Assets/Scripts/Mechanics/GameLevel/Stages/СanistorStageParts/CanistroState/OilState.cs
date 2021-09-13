@@ -21,7 +21,11 @@ namespace Mechanics.GameLevel.Stages.СanistorStageParts
         public override void Action(Action callback)
         {
             _factoryPrompter.ChangeAt(FactoryPrompter.Type.Fun).Say(_configLocalization.FailChooseCanistro);
-            _canistro.Show(2, ()=>_canistro.Hide(2, ()=>callback?.Invoke()));
+            _canistro.Show(2, ()=>
+            {
+                _canistro.Hide(2, () => callback?.Invoke());
+                _canistro.ChangeValueFuel(0,2f, ()=>_canistro.ChangeState<EmptyState>());
+            });
             _player.MakeDirty();
         }
     }

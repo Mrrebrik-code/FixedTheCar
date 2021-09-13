@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DefaultNamespace;
+using Factories;
 using Infrastructure.Configs;
 using Infrastructure.LevelState.States;
 using Mechanics;
@@ -26,6 +27,7 @@ namespace Infrastructure.LevelState.SceneScripts.Game
         [DI] private Curtain _curtain;
         [DI] private ConfigLevel _configLevel;
         [DI] private DataFinishedLevel _dataFinishedLevel;
+        [DI] private FactoryPrompter _factoryPrompter;
 
         private DiBox _diBox = DiBox.MainBox;
         private List<Stage> _stages;

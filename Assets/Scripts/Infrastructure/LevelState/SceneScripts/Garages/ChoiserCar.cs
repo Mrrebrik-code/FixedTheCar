@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿﻿using System.Collections.Generic;
 using Factories;
 using Infrastructure.Configs;
 using Mechanics.Garage;
@@ -21,15 +21,6 @@ namespace Infrastructure.LevelState.SceneScripts.Garages
         {
             _initGarage.Inited -= OnInited;
             _selectorCar.On();
-            _selectorCar.NewCarSelect += OnNewCarSelect;
-        }
-
-        private void OnNewCarSelect(Car obj)
-        {
-            if(!obj)
-                return;
-            _selectorCar.NewCarSelect -= OnNewCarSelect;
-            _factoryPrompter.Current.Say(_configLocalization.HowToStartGame);
         }
 
         private void OnDestroy()

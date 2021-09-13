@@ -12,6 +12,7 @@ namespace Infrastructure.Configs
     [CreateAssetMenu(menuName = "Config/Game", order = 51)]
     public class ConfigGame : ScriptableObject
     {
+        public bool IsDebugMode;
         public Garage TemplateGarage;
         public int startSizePoolSource = 15;
         public AudioSource TemplateSource;
@@ -20,7 +21,6 @@ namespace Infrastructure.Configs
         public List<PrompterType> TemplatePrompter;
         public List<ConfigLevel> ConfigLevels;
         public CanvasUiInput CanvasUI;
-
 
         [Serializable]
         public class PrompterType

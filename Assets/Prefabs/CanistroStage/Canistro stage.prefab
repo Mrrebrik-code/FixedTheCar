@@ -305,6 +305,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stateToTransit: {fileID: 1224090108920670402}
+  _delayFirst: {fileID: 11400000, guid: e659551c04686da418b3ed560fbfb970, type: 2}
+  _delaySecond: {fileID: 11400000, guid: e659551c04686da418b3ed560fbfb970, type: 2}
 --- !u!114 &1224090108920670402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,9 +320,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canistroAgregator: {fileID: 4844184168973211932}
-  _durationUnfade: 2
-  _durationShow: 5
-  _durationFade: 2
+  _durationUnfade: 1
+  _durationShow: 3
+  _durationFade: 1
   _stateToTransit: {fileID: 1514745612750908673}
 --- !u!114 &1514745612750908673
 MonoBehaviour:
@@ -676,10 +678,10 @@ GameObject:
   - component: {fileID: 8177029689366366031}
   - component: {fileID: 8177029689366366030}
   - component: {fileID: 4550751108931016309}
-  - component: {fileID: 4257744849141232376}
   - component: {fileID: 4844184168973211932}
   - component: {fileID: 7418201957881009111}
   - component: {fileID: 1763754020989950455}
+  - component: {fileID: 8483132720811606694}
   m_Layer: 0
   m_Name: Canistro stage
   m_TagString: Untagged
@@ -734,25 +736,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sizeElement: {fileID: 8177029689366366030}
   _stateMschine: {fileID: 7741971215895870561}
-  _transitPlayer: {fileID: 4257744849141232376}
+  _transitPlayer: {fileID: 8483132720811606694}
   _factoryCanistro: {fileID: 7418201957881009111}
   _bigCanistro: {fileID: 7597483991721104725}
   _cameraPoint: {fileID: 3602401658216522912}
   _playerPoint: {fileID: 3925368183080623181}
---- !u!114 &4257744849141232376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8177029689366366029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbc1c3f8dbc24ecfa08108855c28b17f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _point: {fileID: 3925368183080623181}
-  _duration: 1
 --- !u!114 &4844184168973211932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -803,6 +791,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canistorStage: {fileID: 4550751108931016309}
   _bigCanistro: {fileID: 7597483991721104725}
+--- !u!114 &8483132720811606694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8177029689366366029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49081df2811a45129b210ba79181a38d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerPoint: {fileID: 3925368183080623181}
+  _duration: 3
 --- !u!1 &8177029689903609999
 GameObject:
   m_ObjectHideFlags: 0
