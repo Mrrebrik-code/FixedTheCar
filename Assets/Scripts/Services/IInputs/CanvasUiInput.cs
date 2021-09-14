@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Services.IInputs
 {
@@ -10,7 +12,7 @@ namespace Services.IInputs
         [SerializeField] private ButtonInputUI _leftButton;
 
         [SerializeField] private CanvasGroup _canvasGroup;
-        
+
         public void Show() => _canvasGroup.alpha = 1;
 
         public void Hide() => _canvasGroup.alpha = 0;

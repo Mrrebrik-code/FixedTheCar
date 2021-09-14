@@ -1091,7 +1091,7 @@ GameObject:
   - component: {fileID: 8177029688756229347}
   - component: {fileID: 8177029688756229356}
   - component: {fileID: 8177029688756229357}
-  - component: {fileID: 8177029688756229346}
+  - component: {fileID: 2279281432591848730}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -1166,7 +1166,7 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 1
---- !u!114 &8177029688756229346
+--- !u!114 &2279281432591848730
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2716,7 +2716,7 @@ PrefabInstance:
     - target: {fileID: 3353220853823693097, guid: b1f4096a9ee027d43869a1be86aecd0c, type: 3}
       propertyPath: _graphicRaycaster
       value: 
-      objectReference: {fileID: 8177029688756229346}
+      objectReference: {fileID: 0}
     - target: {fileID: 5033018972418833954, guid: b1f4096a9ee027d43869a1be86aecd0c, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
