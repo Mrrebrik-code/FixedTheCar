@@ -46,15 +46,20 @@ namespace Infrastructure.LevelState.States
                 input = CreateDebugInput();
             else if (Application.isMobilePlatform == false)
                 input = new KeyboardInput();
+            else if (_configGame.IsPointAndClick)
+                input = CreateMobilePointAndClickInput();
             else
-                input = CreateMobileInput();
+                input = CreateMobileButtonInput();
+                
             _diBox.RegisterSingle<IInput>(input);
             _coroutineRunner.StartCoroutine(UpdateIInput(input));    
         }
 
+        private IInput CreateMobilePointAndClickInput() => new MobilePointAndClickInput();
+
         private IInput CreateDebugInput() => new DebugInput(CreateCanvasUiInput());
 
-        private IInput CreateMobileInput() => new MobileInput(CreateCanvasUiInput());
+        private IInput CreateMobileButtonInput() => new MobileButtonInput(CreateCanvasUiInput());
 
         private CanvasUiInput CreateCanvasUiInput()
         {

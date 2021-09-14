@@ -32,7 +32,6 @@ namespace Mechanics.GameLevel.Stages.BossStagePart
         private void InitIBossPart()
         {
             _bossParts = GetComponentsInChildren<IBossPart>();
-            Debug.Log("_bossparts="+_bossParts.Length);
             foreach (IBossPart bossPart in _bossParts) bossPart.Cleaned += OnCleanedPart;
         }
 

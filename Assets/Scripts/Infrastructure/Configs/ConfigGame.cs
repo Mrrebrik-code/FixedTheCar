@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Factories;
+using Mechanics;
 using Mechanics.Garage;
 using Mechanics.Prompters;
 using Services.IInputs;
@@ -13,6 +14,8 @@ namespace Infrastructure.Configs
     public class ConfigGame : ScriptableObject
     {
         public bool IsDebugMode;
+        public bool IsPointAndClick;
+        public Player PlayerTemplate => IsPointAndClick ? _playerOnPointAndClick : _playerOnButton;
         public Garage TemplateGarage;
         public int startSizePoolSource = 15;
         public AudioSource TemplateSource;
@@ -22,6 +25,9 @@ namespace Infrastructure.Configs
         public List<ConfigLevel> ConfigLevels;
         public CanvasUiInput CanvasUI;
 
+        [SerializeField] private Player _playerOnButton;
+        [SerializeField] private Player _playerOnPointAndClick;
+        
         [Serializable]
         public class PrompterType
         {

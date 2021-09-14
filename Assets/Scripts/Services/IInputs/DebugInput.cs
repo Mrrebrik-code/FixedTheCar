@@ -9,7 +9,8 @@ namespace Services.IInputs
     {
         private CanvasUiInput _canvasInput;
         public event Action AnyInput;
-        public event Action<Vector3> RayCastClick;
+        public event Action<Vector3> RayCastClickOnScreen;
+        public event Action<Vector2> RayCastInGameField;
         public event Action<float> NormalizeHorizontalMove;
         public Vector3 InputScreenPosition => Input.mousePosition;
 
@@ -44,9 +45,10 @@ namespace Services.IInputs
             if(Input.anyKey) AnyInput?.Invoke();
             if (Input.GetMouseButtonDown(0))
             {
+                RayCastInGameField?.Invoke(Camera.main.ScreenToWorldPoint(Input.mousePosition));
                 if(EventSystem.current.IsPointerOverGameObject())
                     return;
-                RayCastClick?.Invoke(Input.mousePosition);
+                RayCastClickOnScreen?.Invoke(Input.mousePosition);
             }
             NormalizeHorizontalMove?.Invoke(_directionMoveX);
         }

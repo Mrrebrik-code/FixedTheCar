@@ -8,7 +8,7 @@ namespace Mechanics
     public class Player : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
-        [SerializeField] private PlayerMover _playerMover;
+        [SerializeField] private PlayerMover playerMover;
         
         private static readonly int IsDirty = Animator.StringToHash("IsDirty");
         private static readonly int IsMove = Animator.StringToHash("IsMove");
@@ -28,6 +28,10 @@ namespace Mechanics
 
         public void MakeClear() => _animator.SetBool(IsDirty, false);
 
-        public void ChangeActiveMover(bool toActive) => _playerMover.enabled = toActive;
+        public void ChangeActiveMover(bool toActive)
+        {
+            if(toActive) playerMover.On();
+            else playerMover.Off();
+        }
     }
 }

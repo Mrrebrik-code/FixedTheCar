@@ -19,13 +19,13 @@ namespace Infrastructure.LevelState.SceneScripts.Game
     {
         public event Action<List<Stage>> Inited;
 
-        [SerializeField] private Player _playerTemplate;
         [SerializeField] private Button _nextLevelButton;
         [SerializeField] private Transform _parentForStage;
 
         [DI] private LevelStateMachine _levelStateMachine;
         [DI] private Curtain _curtain;
         [DI] private ConfigLevel _configLevel;
+        [DI] private ConfigGame _configGame;
         [DI] private DataFinishedLevel _dataFinishedLevel;
         [DI] private FactoryPrompter _factoryPrompter;
 
@@ -71,7 +71,7 @@ namespace Infrastructure.LevelState.SceneScripts.Game
 
         private void OnDestroy() => _nextLevelButton.onClick.RemoveListener(NextLevel);
 
-        private Player CreatePlayer() => _diBox.CreatePrefab(_playerTemplate);
+        private Player CreatePlayer() => _diBox.CreatePrefab(_configGame.PlayerTemplate);
 
         private List<Stage> CreateStages()
         {

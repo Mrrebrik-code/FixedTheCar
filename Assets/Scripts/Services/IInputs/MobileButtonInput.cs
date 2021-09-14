@@ -6,18 +6,19 @@ using UnityEngine.EventSystems;
 
 namespace Services.IInputs
 {
-	public class MobileInput : IInput, IShowHide
+	public class MobileButtonInput : IInput, IShowHide
 	{
 		public Vector3 InputScreenPosition => GetScreenPositionByLastClick();
 		public event Action AnyInput;
-		public event Action<Vector3> RayCastClick;
+		public event Action<Vector3> RayCastClickOnScreen;
+		public event Action<Vector2> RayCastInGameField;
 		public event Action<float> NormalizeHorizontalMove;
 
 		private float _xDiraction=0;
 		private Vector2 _lastPosition;
 		private CanvasUiInput _canvasInput;
 
-		public MobileInput(CanvasUiInput canvasInput)
+		public MobileButtonInput(CanvasUiInput canvasInput)
 		{
 			_canvasInput = canvasInput;
 			_canvasInput.LeftButton.ClickDown += LeftDown;
@@ -38,9 +39,10 @@ namespace Services.IInputs
 			if (Input.touchCount>0) AnyInput?.Invoke();
 			if (Input.touchCount>0)
 			{
+				RayCastInGameField?.Invoke(Camera.current.ScreenToWorldPoint(Input.mousePosition));
 				if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
 					return;
-				RayCastClick?.Invoke(Input.GetTouch(0).position);
+				RayCastClickOnScreen?.Invoke(Input.GetTouch(0).position);
 			}
 			NormalizeHorizontalMove?.Invoke(_xDiraction);
 		}
