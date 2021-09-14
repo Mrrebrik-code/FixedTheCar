@@ -447,7 +447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EventMask:
     serializedVersion: 2
-    m_Bits: 118
+    m_Bits: 246
   m_MaxRayIntersections: 0
 --- !u!1 &1308012708
 GameObject:
@@ -690,7 +690,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264a350cddbf442fbe67cf56b8877c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerTemplate: {fileID: 2595198447318272089, guid: f7f5e3b25e6c5794687263675ef25e27, type: 3}
   _nextLevelButton: {fileID: 1978726358}
   _parentForStage: {fileID: 189524076}
 --- !u!1 &1688921390

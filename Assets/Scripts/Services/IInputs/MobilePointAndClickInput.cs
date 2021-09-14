@@ -25,7 +25,7 @@ namespace Infrastructure.LevelState.States
             if (Input.touchCount>0) AnyInput?.Invoke();
             if (Input.touchCount>0)
             {
-                RayCastInGameField?.Invoke(Camera.current.ScreenToWorldPoint(Input.mousePosition));
+                RayCastInGameField?.Invoke(Camera.main.ScreenToWorldPoint(Input.mousePosition));
                 if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
                     return;
                 RayCastClickOnScreen?.Invoke(Input.GetTouch(0).position);

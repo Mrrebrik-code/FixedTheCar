@@ -53,7 +53,10 @@ namespace Infrastructure.LevelState.SceneScripts.Garages
 
         private void OnDestroy() => _selectorCar.NewCarSelect -= OnNewCarSelect;
 
-        private void OnNewCarSelect(Car obj) => StartGame();
-
+        private void OnNewCarSelect(Car obj)
+        {
+            if(obj)
+                StartGame();
+        }
     }
 }

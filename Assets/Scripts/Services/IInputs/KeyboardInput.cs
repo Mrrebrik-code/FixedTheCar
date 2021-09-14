@@ -20,7 +20,7 @@ namespace Services.IInputs
             if(Input.anyKey) AnyInput?.Invoke();
             if (Input.GetMouseButtonDown(0))
             {
-                RayCastInGameField?.Invoke(Camera.current.ScreenToWorldPoint(Input.mousePosition));
+                RayCastInGameField?.Invoke(Camera.main.ScreenToWorldPoint(Input.mousePosition));
                 if(EventSystem.current.IsPointerOverGameObject())
                     return;
                 RayCastClickOnScreen?.Invoke(Input.mousePosition);

@@ -96,7 +96,7 @@ namespace Mechanics.GameLevel.Stages.BossStagePart
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            if (!_player && _actionMakeProgress==null) _actionMakeProgress = StartCoroutine(MakeProgress());
+            if (_player!=null && _actionMakeProgress==null) _actionMakeProgress = StartCoroutine(MakeProgress());
         }
     }
 }

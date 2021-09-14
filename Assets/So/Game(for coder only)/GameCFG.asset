@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: GameCFG
   m_EditorClassIdentifier: 
   IsDebugMode: 1
+  IsPointAndClick: 1
   TemplateGarage: {fileID: 6063992734540445619, guid: 98ed148e1857d82469b3c7797d947398, type: 3}
   startSizePoolSource: 15
   TemplateSource: {fileID: 2158239556063573478, guid: ce433c11672d83a47b4b06ba3d5bb2bd, type: 3}
@@ -57,3 +58,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 47fc2cf47fd75514d8eabb6f85fe6c0e, type: 2}
   - {fileID: 11400000, guid: fefba33a322c4854cbad31f87ee3339e, type: 2}
   CanvasUI: {fileID: 6586768562975932855, guid: d04c24ca9cff54e459627fca2513036b, type: 3}
+  _playerOnButton: {fileID: 2595198447318272089, guid: f7f5e3b25e6c5794687263675ef25e27, type: 3}
+  _playerOnPointAndClick: {fileID: 2595198447318272089, guid: 29adfc98010634c4bbb563b26a8b342e, type: 3}
