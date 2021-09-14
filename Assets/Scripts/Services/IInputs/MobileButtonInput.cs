@@ -36,6 +36,7 @@ namespace Services.IInputs
 
 		public void Update()
 		{
+			NormalizeHorizontalMove?.Invoke(_xDiraction);
 			if (Input.touchCount>0) AnyInput?.Invoke();
 			if (Input.touchCount>0)
 			{
@@ -44,7 +45,6 @@ namespace Services.IInputs
 					return;
 				RayCastClickOnScreen?.Invoke(Input.GetTouch(0).position);
 			}
-			NormalizeHorizontalMove?.Invoke(_xDiraction);
 		}
 
 		private void RightUp()

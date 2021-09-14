@@ -1,3 +1,4 @@
+using DefaultNamespace.Services.Console;
 using Infrastructure;
 using Infrastructure.Configs;
 using Infrastructure.LevelState.States;
@@ -11,6 +12,7 @@ public class BootStrapGame : MonoBehaviour, ICoroutineRunner
     [SerializeField] private ConfigLevelName _levelNameConfig;
     [SerializeField] private ConfigGame _configGame;
     [SerializeField] private Curtain _curtainGame;
+    [SerializeField] private ConsoleTMP _console;
 
     [Header("Локализация")] 
     [SerializeField] private ConfigLocalization _russia;
@@ -22,6 +24,7 @@ public class BootStrapGame : MonoBehaviour, ICoroutineRunner
         MakeDontDestroyOnLoad();
         LevelStateMachine levelStateMachine = new LevelStateMachine();
         RegisterDI(levelStateMachine);
+        _console.Init();
         levelStateMachine.Enter<InitGameScene>();
     }
 
@@ -39,6 +42,7 @@ public class BootStrapGame : MonoBehaviour, ICoroutineRunner
         _diBox.RegisterSingle<ICoroutineRunner>(this);
         _diBox.RegisterSingle(_russia);
         _diBox.RegisterSingle(_configGame);
+        _diBox.RegisterSingle<IConsole>(_console);
         CreateSceneLoader();
     }
 
