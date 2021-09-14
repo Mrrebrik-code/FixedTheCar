@@ -21,14 +21,18 @@ namespace Mechanics
         private Coroutine _moveAction;
         
         [DI] private IInput _input;
+        private bool _isStop;
 
         [DI]
         private void Init() => Off();
 
+        public override void SetFakeStop(bool isStop) => _isStop = isStop;
+        
         public override void On()
         {
             base.On();
             _input.RayCastInGameField += OnClickOnScreen;
+            _isStop = false;
         }
 
         public override void Off()
@@ -65,7 +69,7 @@ namespace Mechanics
 
         private bool CanMove(Vector3 target)
         {
-            if (Math.Abs(target.x - transform.position.x) < _distanceToTargetForStop)
+            if (Math.Abs(target.x - transform.position.x) < _distanceToTargetForStop || !enabled || _isStop)
                 return false;
             RaycastHit2D[] hit = Physics2D.RaycastAll(StartPointForRay, GetDiractionVectorByDiractionEnum(), _lenghtRayCastForStop, _mask.value);
             return hit.Length <= 1;

@@ -4,14 +4,17 @@ using UnityEngine;
 
 namespace Mechanics
 {
-    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(Animator), typeof(PlayerMover))]
     public class Player : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
-        [SerializeField] private PlayerMover playerMover;
+        
+        private PlayerMover _playerMover;
         
         private static readonly int IsDirty = Animator.StringToHash("IsDirty");
         private static readonly int IsMove = Animator.StringToHash("IsMove");
+
+        private void Awake() => _playerMover = GetComponent<PlayerMover>();
 
         public void MoveToPoint(Transform point, float duration, Action callback= null)
         {
@@ -30,8 +33,10 @@ namespace Mechanics
 
         public void ChangeActiveMover(bool toActive)
         {
-            if(toActive) playerMover.On();
-            else playerMover.Off();
+            if(toActive) _playerMover.On();
+            else _playerMover.Off();
         }
+
+        public void MakeFakeStopMove(bool isStop) => _playerMover.SetFakeStop(isStop);
     }
 }

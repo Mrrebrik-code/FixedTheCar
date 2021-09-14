@@ -59,16 +59,15 @@ namespace Mechanics.GameLevel.Stages.BossStagePart
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.TryGetComponent<Player>(out var player))
-                _player = player;
+            if (other.gameObject.TryGetComponent<Player>(out var player)) _player = player;
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
             if (other.gameObject.TryGetComponent<Player>(out var player))
             {
-                _player = null;
                 StopProgres();
+                _player = null;
             }
         }
 
@@ -76,6 +75,7 @@ namespace Mechanics.GameLevel.Stages.BossStagePart
         {
             if (_actionMakeProgress != null)
             {
+                _player.MakeFakeStopMove(false);
                 StopCoroutine(_actionMakeProgress);
                 _actionMakeProgress = null;
             }
@@ -96,7 +96,11 @@ namespace Mechanics.GameLevel.Stages.BossStagePart
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            if (_player!=null && _actionMakeProgress==null) _actionMakeProgress = StartCoroutine(MakeProgress());
+            if (_player != null && _actionMakeProgress == null)
+            {
+                _player.MakeFakeStopMove(true);
+                _actionMakeProgress = StartCoroutine(MakeProgress());
+            }
         }
     }
 }

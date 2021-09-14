@@ -21,5 +21,7 @@ namespace Mechanics
             Player.SetMoveAnimationActive(false);
             SpriteRenderer.flipX = false;
         }
+
+        public abstract void SetFakeStop(bool isStop);
     }
 }
