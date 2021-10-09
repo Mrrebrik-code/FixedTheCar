@@ -30,9 +30,10 @@ namespace Mechanics.GameLevel.Stages.ElectroStageParts.Machines.State
             _factoryPrompter.ChangeAt(FactoryPrompter.Type.Hello);
             _factoryPrompter.Current.Unhide(() =>
             {
-                _factoryPrompter.Current.Say(_configLocalization.HelloElectroStage, 
-                    ()=>_delay.Activated(NextAction));
+                _factoryPrompter.Current.Say(_configLocalization.HelloElectroStage,
+                    () => _delay.Activated(NextAction));
             });
+            AudioHandler.Instance.PlaySound(_configLocalization.HelloElectroStageClip);
         }
 
         public override void Off()

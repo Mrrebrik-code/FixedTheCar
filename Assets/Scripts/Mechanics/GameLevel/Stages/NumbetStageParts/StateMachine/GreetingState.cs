@@ -31,6 +31,7 @@ namespace Mechanics.GameLevel.Stages.NumbetStageParts.StateMachine
                     _configLocalization.HelloNumberStage, 
                     ()=>_delayFirst.Activated(OnFirstClick))
                 );
+            AudioHandler.Instance.PlaySound(_configLocalization.HelloNumberStageClip);
         }
 
         public override void Off() => _canTransit = false;
@@ -40,7 +41,8 @@ namespace Mechanics.GameLevel.Stages.NumbetStageParts.StateMachine
         private void OnFirstClick()
         {
             _input.AnyInput -= OnFirstClick;
-            CurrentPromter.Say(_configLocalization.HelloNumberStage2, ()=>_delaySecond.Activated(OnSecondClick));
+			CurrentPromter.Say(_configLocalization.HelloNumberStage2, () => _delaySecond.Activated(OnSecondClick));
+            AudioHandler.Instance.PlaySound(_configLocalization.HelloNumberStage2Clip);
         }
 
         private void OnSecondClick()

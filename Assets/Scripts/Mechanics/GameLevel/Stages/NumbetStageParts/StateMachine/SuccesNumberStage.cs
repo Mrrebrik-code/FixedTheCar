@@ -20,6 +20,7 @@ namespace Mechanics.GameLevel.Stages.NumbetStageParts.StateMachine
         public override void On()
         {
             _factoryPrompter.ChangeAndSayNoneAnimated(FactoryPrompter.Type.Idea, _configLocalization.PraiseNumber);
+            AudioHandler.Instance.PlaySound(_configLocalization.PraiseNumberClip);
             _engine.NewStage += OnNewStage;
             _engine.Completed += OnComleted;
         }

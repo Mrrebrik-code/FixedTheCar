@@ -31,6 +31,7 @@ namespace Mechanics.GameLevel.Stages.СanistorStageParts
                 });
             });
             _factoryPrompter.ChangeAt(FactoryPrompter.Type.Idea).Say(_configLocalization.СorrectlyChooseCanistro);
+            AudioHandler.Instance.PlaySound(_configLocalization.СorrectlyChooseCanistroClip);
         }
     }
 }

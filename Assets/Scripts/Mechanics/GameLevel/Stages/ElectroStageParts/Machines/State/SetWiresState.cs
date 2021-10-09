@@ -22,7 +22,8 @@ namespace Mechanics.GameLevel.Stages.ElectroStageParts.Machines.State
         public override void On()
         {
             _factoryPrompter.ChangeAt(FactoryPrompter.Type.Hello);
-            _factoryPrompter.Current.Say(_configLocalization.TakeAnyWire);
+			_factoryPrompter.Current.Say(_configLocalization.TakeAnyWire);
+            AudioHandler.Instance.PlaySound(_configLocalization.TakeAnyWireClip);
             _interactWithWire.OnInteract();
             _wires.FixedAll += OnFixedAll;
             _wires.FixedOnePart += OnFixedOne;

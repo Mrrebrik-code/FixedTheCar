@@ -21,6 +21,7 @@ namespace Mechanics.GameLevel.Stages.NumbetStageParts.StateMachine
         {
             var emotion = Random.Range(0, 1f) > 0.5f ? FactoryPrompter.Type.Fun : FactoryPrompter.Type.WTF;
             _factoryPrompter.ChangeAndSayNoneAnimated(emotion, _configLocalization.NonPraiseNumber);
+            AudioHandler.Instance.PlaySound(_configLocalization.NonPraiseNumberClip);
             _input.AnyInput += OnAnyInput;
         }
 

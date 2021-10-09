@@ -25,6 +25,7 @@ namespace Mechanics.GameLevel.Stages.BossStagePart.StateMachine.State
             _factoryPrompter.ChangeAt(FactoryPrompter.Type.WTF).Unhide(
                 ()=>_factoryPrompter.Current.Say(_configLocalization.LoseBossStage,
                     ()=>_input.AnyInput+=OnAnyInput));
+            AudioHandler.Instance.PlaySound(_configLocalization.LoseBossStageClip);
         }
 
         private void OnAnyInput()

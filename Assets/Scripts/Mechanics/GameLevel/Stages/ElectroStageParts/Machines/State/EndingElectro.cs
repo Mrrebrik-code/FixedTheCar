@@ -15,7 +15,8 @@ namespace Mechanics.GameLevel.Stages.ElectroStageParts.Machines.State
         public override void On()
         {
             _factoryPrompter.ChangeAt(FactoryPrompter.Type.Idea);
-            _factoryPrompter.Current.Say(_configLocalization.FinishElectroStage);
+			_factoryPrompter.Current.Say(_configLocalization.FinishElectroStage);
+            AudioHandler.Instance.PlaySound(_configLocalization.FinishElectroStageClip);
             _player.GetComponent<SpriteRenderer>().flipX = false;
         }
 

@@ -33,6 +33,8 @@ namespace Mechanics.SketchBook
             _factoryPrompter.ChangeAt(FactoryPrompter.Type.Hello).Unhide(
                 ()=>_factoryPrompter.Current.Say(_configLocalization.SketchBookHello,
                     ()=>_input.AnyInput+=OnAnyInput));
+            AudioHandler.Instance.PlaySound(_configLocalization.SketchBookHelloClip);
+
         }
 
         private void OnAnyInput()

@@ -31,7 +31,8 @@ namespace Mechanics.GameLevel.Stages.ElectroStageParts.Machines.State
         {
             _tapeAgregator.SomeTapeFixed += OnSomeTapedFixed;
             _factoryPrompter.ChangeAt(FactoryPrompter.Type.WTF);
-            _factoryPrompter.Current.Say(_configLocalization.FailElectroMove);
+			_factoryPrompter.Current.Say(_configLocalization.FailElectroMove);
+            AudioHandler.Instance.PlaySound(_configLocalization.FailElectroMoveClip);
         }
 
         private void OnSomeTapedFixed()

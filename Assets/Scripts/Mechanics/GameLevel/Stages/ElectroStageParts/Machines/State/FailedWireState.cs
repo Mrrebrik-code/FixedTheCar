@@ -21,7 +21,8 @@ namespace Mechanics.GameLevel.Stages.ElectroStageParts.Machines.State
         public override void On()
         {
             _factoryPrompter.ChangeAt(FactoryPrompter.Type.DontKnow);
-            _factoryPrompter.Current.Say(_configLocalization.FailSetWires, ()=>_delay.Activated(OnInput));
+            _factoryPrompter.Current.Say(_configLocalization.FailSetWires, () => _delay.Activated(OnInput));
+            AudioHandler.Instance.PlaySound(_configLocalization.FailSetWiresClip);
         }
 
         public override void Off() => _transit = false;

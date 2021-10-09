@@ -21,6 +21,7 @@ namespace Mechanics.GameLevel.Stages.СanistorStageParts
         public override void Action(Action callback)
         {
             _factoryPrompter.ChangeAt(FactoryPrompter.Type.Fun).Say(_configLocalization.FailChooseCanistro);
+            AudioHandler.Instance.PlaySound(_configLocalization.FailChooseCanistroClip);
             _canistro.Show(2, ()=>
             {
                 _canistro.Hide(2, () => callback?.Invoke());

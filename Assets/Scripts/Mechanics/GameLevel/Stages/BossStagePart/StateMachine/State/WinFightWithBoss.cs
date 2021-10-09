@@ -13,7 +13,8 @@ namespace Mechanics.GameLevel.Stages.BossStagePart.StateMachine.State
 
         public override void On()
         {
-            _factoryPrompter.ChangeAt(FactoryPrompter.Type.Fun).Unhide(()=>_factoryPrompter.Current.Say(_configLocalization.WinBossStage));
+            _factoryPrompter.ChangeAt(FactoryPrompter.Type.Fun).Unhide(() => _factoryPrompter.Current.Say(_configLocalization.WinBossStage));
+            AudioHandler.Instance.PlaySound(_configLocalization.WinBossStageClip);
         }
 
         public override void Off()

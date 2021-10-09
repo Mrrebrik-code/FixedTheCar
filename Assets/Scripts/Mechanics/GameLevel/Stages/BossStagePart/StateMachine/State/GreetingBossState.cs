@@ -24,6 +24,7 @@ namespace Mechanics.GameLevel.Stages.BossStagePart.StateMachine.State
             _factoryPrompter.Current.Unhide(
                 ()=>_factoryPrompter.Current.Say(_configLocalization.HelloBossStage, 
                     ()=>_delay.Activated(OnAnyInput)));
+            AudioHandler.Instance.PlaySound(_configLocalization.HelloBossStageClip);
         }
 
         private void OnAnyInput()

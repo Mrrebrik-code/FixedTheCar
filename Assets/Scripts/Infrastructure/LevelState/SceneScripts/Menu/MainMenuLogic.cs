@@ -38,6 +38,7 @@ namespace Infrastructure.LevelState.SceneScripts.Menu
             _currentPropter.Unhide(() =>
             {
                 _currentPropter.Say(_configLocalization.Wellcome, ()=> _input.AnyInput += OnAnyInput);
+                AudioHandler.Instance.PlaySound(_configLocalization.WelcomeClip);
             });
         }
 

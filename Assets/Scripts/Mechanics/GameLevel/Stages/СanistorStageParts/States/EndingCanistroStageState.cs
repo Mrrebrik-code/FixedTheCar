@@ -18,6 +18,7 @@ namespace Mechanics.GameLevel.Stages.СanistorStageParts.States
         public override void On()
         {
             FactoryPrompter.ChangeAt(FactoryPrompter.Type.Hello).Say(ConfigLocalization.EndCanistrostage);
+            AudioHandler.Instance.PlaySound(ConfigLocalization.EndCanistrostageClip);
             _player.MakeClear();
         }
 

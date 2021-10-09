@@ -18,7 +18,8 @@ namespace Mechanics.GameLevel.Stages.ElectroStageParts.Machines.State
         
         public override void On()
         {
-            _factoryPrompter.Current.Say(_configLocalization.StartTapeStage);
+			_factoryPrompter.Current.Say(_configLocalization.StartTapeStage);
+            AudioHandler.Instance.PlaySound(_configLocalization.StartTapeStageClip);
             electroPath.StartMove();
             electroPath.Failed += OnFailed;
             electroPath.Finished += OnFinished;

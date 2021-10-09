@@ -8,8 +8,12 @@ namespace Mechanics.GameLevel.Stages.NumbetStageParts.StateMachine
     {
         [DI] private FactoryPrompter _factoryPrompter;
         [DI] private ConfigLocalization _configLocalization;
+
+        public override void On(){
+            AudioHandler.Instance.PlaySound(_configLocalization.EndNumberStageClip);
+            _factoryPrompter.ChangeAndSayNoneAnimated(FactoryPrompter.Type.Hello, _configLocalization.EndNumberStage);
+        }
         
-        public override void On() => _factoryPrompter.ChangeAndSayNoneAnimated(FactoryPrompter.Type.Hello, _configLocalization.EndNumberStage);
 
         public override void Off()
         {

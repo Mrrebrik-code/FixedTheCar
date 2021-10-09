@@ -20,7 +20,8 @@ namespace Mechanics.GameLevel.Stages.СanistorStageParts.States
             FactoryPrompter.Current.Unhide(
                 ()=>FactoryPrompter.Current.Say(ConfigLocalization.HelloCanistorStage, 
                     ()=>_delayFirst.Activated(OnAnyKey)));
-            
+            AudioHandler.Instance.PlaySound(ConfigLocalization.HelloCanistorStageClip);
+
         }
 
         private void OnAnyKey()
@@ -28,6 +29,7 @@ namespace Mechanics.GameLevel.Stages.СanistorStageParts.States
             InputPlayer.AnyInput -= OnAnyKey;
             FactoryPrompter.Current.Say(ConfigLocalization.HelloCanistorStage2, 
                 () => _delaySecond.Activated(OnAnyKey2));
+            AudioHandler.Instance.PlaySound(ConfigLocalization.HelloCanistorStage2Clip);
         }
 
         private void OnAnyKey2()

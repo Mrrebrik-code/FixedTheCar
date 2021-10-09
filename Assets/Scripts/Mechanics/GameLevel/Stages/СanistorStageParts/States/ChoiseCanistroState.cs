@@ -17,6 +17,7 @@ namespace Mechanics.GameLevel.Stages.СanistorStageParts.States
                 ()=>
                 {
                     FactoryPrompter.ChangeAt(FactoryPrompter.Type.Hello).Say(ConfigLocalization.ChooseAnyCanisters);
+                    AudioHandler.Instance.PlaySound(ConfigLocalization.ChooseAnyCanistersClip);
                     _canistroAgregator.SomeCanistroActionStart += OnStartActionCanistro;
                     _canistroAgregator.ChangeInteractTo(true);
                     

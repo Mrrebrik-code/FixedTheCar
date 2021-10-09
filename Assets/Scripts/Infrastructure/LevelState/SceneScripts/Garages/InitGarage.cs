@@ -38,9 +38,11 @@ namespace Infrastructure.LevelState.SceneScripts.Garages
             var current = _factoryPrompter.Current;
             current.Unhide(
                 () => current.Say(_configLocalization.FirstFixCar,
+
                     () => Inited?.Invoke(_garages)
                 )
             );
+            AudioHandler.Instance.PlaySound(_configLocalization.FirstFixCarClip);
         }
 
         private void SetCamera()
