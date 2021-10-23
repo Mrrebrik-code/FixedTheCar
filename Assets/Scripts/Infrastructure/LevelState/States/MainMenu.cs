@@ -14,6 +14,7 @@ namespace Infrastructure.LevelState.States
         public void Enter()
         {
             _sceneLoader.Load(_configLevel.MainMnu, _curtain.Unfade);
+            AudioHandler.Instance.PlaySound(TypeSound.Scene);
         }
 
         public void Exit()

@@ -395,7 +395,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _soundSource: {fileID: 940212830}
   _musicSource: {fileID: 93796065}
-  _sounds: []
+  _sounds:
+  - {fileID: 8300000, guid: 26d4360a79af9ea4d94c4281e495e4df, type: 3}
+  - {fileID: 8300000, guid: c60840306e912d64d96ffad46672a181, type: 3}
+  - {fileID: 8300000, guid: aa3b7e42ee098e141bc94c0d7aced2e2, type: 3}
+  - {fileID: 8300000, guid: 3ec8e4baba685cc47934dee9a025331f, type: 3}
+  - {fileID: 8300000, guid: 4c108f57224fbaf4eb3d706c558d6b24, type: 3}
+  - {fileID: 8300000, guid: 43fb9c3894f749044b4f994cd238ed52, type: 3}
 --- !u!4 &441412292
 Transform:
   m_ObjectHideFlags: 0

@@ -36,6 +36,7 @@ namespace Mechanics.GameLevel.Stages.ElectroStageParts
 
         private IEnumerator MoveAction(PathCreator pathCreator)
         {
+            AudioHandler.Instance.PlaySound(TypeSound.FireMove);
             float passDuration = 0;
             _image.DOFade(1, 0.0001f);
             while (passDuration<_durationMovePath)

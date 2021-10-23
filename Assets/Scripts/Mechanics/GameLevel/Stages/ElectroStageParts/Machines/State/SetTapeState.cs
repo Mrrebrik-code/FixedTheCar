@@ -34,7 +34,11 @@ namespace Mechanics.GameLevel.Stages.ElectroStageParts.Machines.State
 
         public override Stages.State TransitToOrNull() => _electorState;
         
-        private void OnFinished() => _electorState = _endingElectro;
+        private void OnFinished()
+        {
+            AudioHandler.Instance.PlaySound(TypeSound.Motor);
+            _electorState = _endingElectro;
+        }
 
         private void OnFailed() => _electorState = _failElectro;
     }

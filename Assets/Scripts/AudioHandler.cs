@@ -5,7 +5,12 @@ using UnityEngine;
 
 public enum TypeSound : int
 {
-
+	FireMove,
+	Motor,
+	SelectedFail,
+	Oil,
+	Scene,
+	RobotClear
 }
 public class AudioHandler : MonoBehaviour
 {

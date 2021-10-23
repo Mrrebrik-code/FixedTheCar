@@ -10,9 +10,12 @@ namespace Infrastructure
     public class SceneLoader
     {
         [DI]private ICoroutineRunner _coroutineRunner;
-
-        public void Load(string name, Action onLoaded = null) =>
+        
+        public void Load(string name, Action onLoaded = null)
+		{
             _coroutineRunner.StartCoroutine(LoadScene(name, onLoaded));
+        }
+            
         
         private IEnumerator LoadScene(string name, Action onLoaded = null)
         {

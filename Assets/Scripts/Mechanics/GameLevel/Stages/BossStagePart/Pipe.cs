@@ -11,6 +11,7 @@ namespace Mechanics.GameLevel.Stages.BossStagePart
         
         public void MakeFlow(Action action)
         {
+            AudioHandler.Instance.PlaySound(TypeSound.RobotClear);
             _particleSystem.Play();
             StartCoroutine(InvokeCallbackWithDelay(action));
         }

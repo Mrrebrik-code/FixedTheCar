@@ -19,6 +19,7 @@ namespace Infrastructure.LevelState.States
         {
             CreateDI(new SelectorCar());
             _sceneLoader.Load(_configLevel.Garage);
+            AudioHandler.Instance.PlaySound(TypeSound.Scene);
         }
 
         public void Exit()

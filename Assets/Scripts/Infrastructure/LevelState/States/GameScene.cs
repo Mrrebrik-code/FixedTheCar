@@ -18,6 +18,7 @@ namespace Infrastructure.LevelState.States
             _diBox.RegisterSingle(levelConfig);
             _diBox.RegisterSingle(new DataFinishedLevel());
             _sceneLoader.Load(_levelName.GameLevel);
+            AudioHandler.Instance.PlaySound(TypeSound.Scene);
         }
 
         public void Exit()

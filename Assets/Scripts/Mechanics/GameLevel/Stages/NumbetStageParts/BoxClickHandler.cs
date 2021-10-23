@@ -38,6 +38,7 @@ namespace Mechanics.GameLevel.Stages.NumbetStageParts
             else
             {
                 FailClick?.Invoke();
+                AudioHandler.Instance.PlaySound(TypeSound.Oil);
             }
         }
     }

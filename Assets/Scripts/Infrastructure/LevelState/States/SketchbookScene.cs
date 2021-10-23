@@ -21,6 +21,7 @@ namespace Infrastructure.LevelState.States
             if(levelConfig)
                 _diBox.RegisterSingle(levelConfig);
             _sceneLoader.Load(_configLevelName.SketchBook, ()=>_curtain.Unfade());
+            AudioHandler.Instance.PlaySound(TypeSound.Scene);
         }
 
         public void Exit()
