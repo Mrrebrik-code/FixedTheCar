@@ -16,4 +16,7 @@ MonoBehaviour:
   Stiker: {fileID: 21300000, guid: 4d57eb946e61b174e81ab19acf1ddd5b, type: 3}
   CarTemplate: {fileID: 2382000099197176238, guid: a28451f0743cb3f4a8bab4efbc8675cb, type: 3}
   StagesLevel:
+  - {fileID: 11400000, guid: 14cac22a24e544e41bb5a6d421467840, type: 2}
   - {fileID: 11400000, guid: f7e760859b3db6c448bcbc4a113d3456, type: 2}
+  - {fileID: 11400000, guid: 5de62eb059051594ba73c133f0f1d622, type: 2}
+  - {fileID: 11400000, guid: 478375daa7df00744bb084c47bdf84e4, type: 2}
